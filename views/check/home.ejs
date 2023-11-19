@@ -1,20 +1,26 @@
 <% layout("layouts/boilerplate") %>
 <h1>Home</h1>
 <div id="checksContainer">
-  <% checks.forEach(checks => { %>
-  <p class="fs-5">Check: <%= checks.title %> - Price: <%= checks.price %></p>
-  <% checks.people.forEach(people => { %>
-  <p class="fs-6 fw-light fst-italic">People: <%= people.name %></p>
-  <ul>
-    <% people.orders.forEach(orders => { %>
-    <li>Order: <%= orders.food %></li>
-    <li>Quantity: <%= orders.quantity %></li>
-    <li>Price: <%= orders.price %></li>
-    <% }) %>
-  </ul>
-  <% }) %>
-  <hr />
-  <% }) %>
+  <% let position = 0; checks.forEach(checks => { %>
+  <a class="text-decoration-none text-dark" href="/check/<%= position %>">
+    <div>
+      <p class="fs-5">
+        Check: <%= checks.title %> - Price: <%= checks.price %>
+      </p>
+      <% checks.people.forEach(people => { %>
+      <p class="fs-6 fw-light fst-italic">People: <%= people.name %></p>
+      <ul>
+        <% people.orders.forEach(orders => { %>
+        <li>Order: <%= orders.food %></li>
+        <li>Quantity: <%= orders.quantity %></li>
+        <li>Price: <%= orders.price %></li>
+        <% }) %>
+      </ul>
+      <% }) %>
+      <hr />
+    </div>
+  </a>
+  <% position++; }) %>
   <a type="button" class="btn btn-success mb-5" href="/addCheck">
     Add Template
   </a>
