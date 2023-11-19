@@ -5,3 +5,5 @@ class Check {
     this.date = date;
   }
 }
+
+module.exports = Check;
