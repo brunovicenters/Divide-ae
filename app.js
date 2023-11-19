@@ -31,12 +31,19 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/check/:arrPos", (req, res) => {
+  const check = store.get("checks")[req.params.arrPos];
+  res.render("check/check", {
+    check: check,
+  });
+});
+
 app.get("/addCheck", (req, res) => {
   const checks = store.get("checks");
   try {
     checks.push(
       new Check(
-        "it's a check",
+        "it's another check",
         Math.floor(Math.random() * 300),
         new Date(),
         new People("Bruno", new Order("pizza", 1, 10))
