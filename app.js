@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const ejsMate = require("ejs-mate");
 const store = require("store");
+const methodOverride = require("method-override");
 
 const app = express();
 
@@ -15,6 +16,8 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use(methodOverride("_method"));
 
 store.set("checks", [
   new Check(
