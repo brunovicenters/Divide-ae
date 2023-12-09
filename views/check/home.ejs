@@ -1,7 +1,13 @@
 <% layout("layouts/boilerplate") %>
 <h1>Home</h1>
+
 <div id="checksContainer" class="mb-5 d-flex flex-column-reverse">
-  <% let position = 0; checks.forEach(checks => { %>
+  <% if (checks.length == 0) { %>
+  <div class="alert alert-danger" role="alert">
+    You don't have any checks yet!
+  </div>
+
+  <% } else { let position = 0; checks.forEach(checks => { %>
   <a class="text-decoration-none text-dark" href="/check/<%= position %>">
     <div>
       <p class="fs-5">
@@ -20,8 +26,18 @@
       <hr />
     </div>
   </a>
-  <% position++; }) %>
-  <a type="button" class="btn btn-success mb-2" href="/addCheck">
-    Add Template
-  </a>
+  <% position++; }) } %>
+  <hr />
+  <div class="d-flex mb-2 gap-1">
+    <form class="flex-grow-1 d-flex" action="/addCheck" method="POST">
+      <button type="submit" class="btn btn-success flex-grow-1">
+        Add Check
+      </button>
+    </form>
+    <form class="flex-grow-1 d-flex" action="/deleteAll" method="post">
+      <button type="submit" class="btn btn-danger flex-grow-1" id="deleteAll">
+        Delete All
+      </button>
+    </form>
+  </div>
 </div>
