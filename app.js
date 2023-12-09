@@ -34,7 +34,7 @@ app.get("/check/:arrPos", (req, res) => {
   });
 });
 
-app.get("/addCheck", (req, res) => {
+app.post("/addCheck", (req, res) => {
   const checks = store.get("checks");
   try {
     let date =
@@ -59,6 +59,11 @@ app.get("/addCheck", (req, res) => {
   } catch (error) {
     console.log(error);
   }
+  res.redirect("/");
+});
+
+app.post("/deleteAll", (req, res) => {
+  store.set("checks", []);
   res.redirect("/");
 });
 
