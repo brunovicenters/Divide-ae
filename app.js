@@ -19,14 +19,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(methodOverride("_method"));
 
-store.set("checks", [
-  new Check(
-    "it's a check",
-    Math.floor(Math.random() * 300),
-    new Date(),
-    new People("Bruno", new Order("pizza", 1, 10))
-  ),
-]);
+store.set("checks", []);
 
 app.get("/", (req, res) => {
   res.render("check/home", {
@@ -44,11 +37,21 @@ app.get("/check/:arrPos", (req, res) => {
 app.get("/addCheck", (req, res) => {
   const checks = store.get("checks");
   try {
+    let date =
+      new Date().getHours() +
+      ":" +
+      new Date().getMinutes() +
+      ", " +
+      new Date().getDay() +
+      "/" +
+      new Date().getMonth() +
+      "/" +
+      new Date().getFullYear();
     checks.push(
       new Check(
         "it's another check",
         Math.floor(Math.random() * 300),
-        new Date(),
+        date,
         new People("Bruno", new Order("pizza", 1, 10))
       )
     );
