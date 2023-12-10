@@ -2,7 +2,7 @@
 <h1>Home</h1>
 
 <div id="checksContainer">
-  <div class="d-flex mb-2 gap-1">
+  <div class="d-flex flex-wrap mb-1 gap-1">
     <!-- Button trigger modal -->
     <button
       type="button"
@@ -18,28 +18,29 @@
         Delete All
       </button>
     </form>
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="addForm"
-      tabindex="-1"
-      aria-labelledby="addFormLabel"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2 class="modal-title h2" id="addFormLabel">Add a check</h2>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"></button>
-          </div>
-          <form
-            action="/addCheck"
-            method="POST"
-            novalidate
-            class="validated-form">
+    <form
+      action="/addCheck"
+      method="POST"
+      novalidate
+      class="validated-form w-100">
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="addForm"
+        tabindex="-1"
+        aria-labelledby="addFormLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title h2" id="addFormLabel">Add a check</h2>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+
             <div class="modal-body">
               <h5>Restaurant</h5>
               <!-- Restaurant's name -->
@@ -148,10 +149,10 @@
               </button>
               <button class="btn btn-success">Add</button>
             </div>
-          </form>
+          </div>
         </div>
       </div>
-    </div>
+    </form>
   </div>
 
   <hr />
