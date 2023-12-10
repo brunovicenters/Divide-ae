@@ -4,10 +4,6 @@ class Order {
     this.quantity = quantity;
     this.price = price;
   }
-
-  totalPrice() {
-    return this.quantity * this.price;
-  }
 }
 
 module.exports = Order;
