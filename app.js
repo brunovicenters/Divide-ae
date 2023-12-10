@@ -12,6 +12,8 @@ const Order = require("./classes/order");
 
 app.engine("ejs", ejsMate);
 
+app.use(express.urlencoded({ extended: true }));
+
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
