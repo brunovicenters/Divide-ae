@@ -25,9 +25,16 @@ store.set("checks", []);
 store.set("theme", "light");
 store.set("language", "en");
 
+const brlCurrency = new Intl.NumberFormat("pt-BR", {
+  style: "currency",
+  currency: "BRL",
+  minimumFractionDigits: 2,
+});
+
 app.get("/", (req, res) => {
   res.render("check/home", {
     checks: store.get("checks"),
+    brlCurrency: brlCurrency,
     theme: store.get("theme"),
     language: store.get("language"),
   });
