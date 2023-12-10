@@ -90,9 +90,9 @@
                     class="form-control"
                     required />
                   <span class="input-group-text">%</span>
+                  <div class="valid-feedback">That's a nice tip!</div>
+                  <div class="invalid-feedback">How much are you tipping?</div>
                 </div>
-                <div class="valid-feedback">That's a nice tip!</div>
-                <div class="invalid-feedback">How much are you tipping?</div>
               </div>
               <!-- Total Price -->
               <div class="mb-3">
@@ -211,18 +211,16 @@
 
           <hr />
 
-          <% check.people.forEach(person => { %>
-          <p class="card-text">People: <%= person.name %></p>
-          <ul class="card-text">
-            <% person.orders.forEach(order => { %>
-            <li>Order: <%= order.food %></li>
-            <li>Quantity: <%= order.quantity %></li>
-            <li>Price: <%= order.price * order.quantity %></li>
-            <li>Price: <%= check.tip * 100 %>%</li>
-            <% }) %>
-          </ul>
+          <p class="card-text">
+            Total price: <%= brlCurrency.format(check.price) %>
+          </p>
+          <p class="card-text">Tip: <%= check.tip * 100 %>%</p>
+          <p class="card-text">Date: <%= check.date %></p>
+          <p class="card-text">
+            <i class="bi bi-people fs-3"></i>
+            <%= check.people.length %>
+          </p>
         </div>
-        <% }) %>
       </div>
     </a>
     <% position++; })} %>
