@@ -6,9 +6,9 @@ const methodOverride = require("method-override");
 
 const app = express();
 
-const Check = require("./classes/check");
-const Person = require("./classes/person");
-const Order = require("./classes/order");
+const Check = require("./controller/check");
+const Person = require("./controller/person");
+const Order = require("./controller/order");
 
 app.engine("ejs", ejsMate);
 
