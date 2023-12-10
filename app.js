@@ -22,10 +22,14 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(methodOverride("_method"));
 
 store.set("checks", []);
+store.set("theme", "light");
+store.set("language", "en");
 
 app.get("/", (req, res) => {
   res.render("check/home", {
     checks: store.get("checks"),
+    theme: store.get("theme"),
+    language: store.get("language"),
   });
 });
 
@@ -33,6 +37,8 @@ app.get("/check/:arrPos", (req, res) => {
   const check = store.get("checks")[req.params.arrPos];
   res.render("check/check", {
     check: check,
+    theme: store.get("theme"),
+    language: store.get("language"),
   });
 });
 
