@@ -28,22 +28,116 @@
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="addFormLabel">Add a check</h1>
+            <h2 class="modal-title h2" id="addFormLabel">Add a check</h2>
             <button
               type="button"
               class="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"></button>
           </div>
-          <form action="/addCheck" method="POST">
+          <form
+            action="/addCheck"
+            method="POST"
+            novalidate
+            class="validated-form">
             <div class="modal-body">
-              <input
-                type="text"
-                name="check[restaurant]"
-                id="restaurant"
-                placeholder="Restaurant..."
-                class="form-control"
-                required />
+              <h5>Restaurant</h5>
+              <!-- Restaurant's name -->
+              <div class="mb-3">
+                <label for="restaurant" class="form-label">
+                  Restaurant's name:
+                </label>
+                <input
+                  type="text"
+                  name="check[restaurant]"
+                  id="restaurant"
+                  placeholder="Restaurant..."
+                  class="form-control"
+                  required />
+                <div class="valid-feedback">That's a nice restaurant!</div>
+                <div class="invalid-feedback">What restaurant was it?</div>
+              </div>
+              <!-- Total Price -->
+              <div class="mb-3">
+                <label for="totalPrice" class="form-label">
+                  Checks's Total Price:
+                </label>
+                <input
+                  type="number"
+                  name="check[totalPrice]"
+                  id="totalPrice"
+                  min="0.1"
+                  step="0.1"
+                  placeholder="totalPrice..."
+                  class="form-control"
+                  required />
+                <div class="valid-feedback">Good deal!</div>
+                <div class="invalid-feedback">What's the total price?</div>
+              </div>
+
+              <hr />
+
+              <h5>People</h5>
+              <!-- Person's Name -->
+              <div class="mb-3">
+                <label for="person" class="form-label">First person:</label>
+                <input
+                  type="text"
+                  name="check[person]"
+                  id="person"
+                  placeholder="Person's name..."
+                  class="form-control"
+                  required />
+                <div class="valid-feedback">Cool name!</div>
+                <div class="invalid-feedback">What is your name?</div>
+              </div>
+
+              <hr />
+
+              <h5>Order</h5>
+              <!-- Order -->
+              <div class="mb-3">
+                <label for="dish" class="form-label">First dish:</label>
+                <input
+                  type="text"
+                  name="check[dish]"
+                  id="dish"
+                  placeholder="Dish's name..."
+                  class="form-control"
+                  required />
+                <div class="valid-feedback">Sounds delicious!</div>
+                <div class="invalid-feedback">What did you eat?</div>
+              </div>
+              <div class="mb-3">
+                <label for="qty" class="form-label">Quantity:</label>
+                <input
+                  type="number"
+                  name="check[qty]"
+                  id="qty"
+                  min="1"
+                  step="1"
+                  placeholder="Quantity..."
+                  class="form-control"
+                  required />
+                <div class="valid-feedback">It seems reasonable!</div>
+                <div class="invalid-feedback">How many did you order?</div>
+              </div>
+              <div class="mb-3">
+                <label for="price" class="form-label">Price per dish:</label>
+                <input
+                  type="text"
+                  name="check[price]"
+                  id="price"
+                  min="0.1"
+                  step="0.1"
+                  placeholder="Price per dish..."
+                  class="form-control"
+                  required />
+                <div class="valid-feedback">Valid price!</div>
+                <div class="invalid-feedback">
+                  How much did it cost per dish?
+                </div>
+              </div>
             </div>
             <div class="modal-footer">
               <button
