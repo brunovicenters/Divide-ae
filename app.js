@@ -61,7 +61,8 @@ app.post("/addCheck", (req, res) => {
         check.restaurant,
         check.totalPrice,
         date,
-        new Person(check.person, new Order(check.dish, check.qty, check.price))
+        new Person(check.person, new Order(check.dish, check.qty, check.price)),
+        check.tip / 100
       )
     );
     store.set("checks", checks);
