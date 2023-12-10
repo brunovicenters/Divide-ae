@@ -1,43 +1,92 @@
 <% layout("layouts/boilerplate") %>
 <h1>Home</h1>
 
-<div id="checksContainer" class="mb-5 d-flex flex-column-reverse">
-  <% if (checks.length == 0) { %>
-  <div class="alert alert-danger" role="alert">
-    You don't have any checks yet!
-  </div>
-
-  <% } else { let position = 0; checks.forEach(checks => { %>
-  <a class="text-decoration-none text-dark" href="/check/<%= position %>">
-    <div>
-      <p class="fs-5">
-        Check: <%= checks.title %> - Price: <%= checks.price %>
-      </p>
-      <% checks.people.forEach(people => { %>
-      <p class="fs-6 fw-light fst-italic">People: <%= people.name %></p>
-      <ul>
-        <% people.orders.forEach(orders => { %>
-        <li>Order: <%= orders.food %></li>
-        <li>Quantity: <%= orders.quantity %></li>
-        <li>Price: <%= orders.price %></li>
-        <% }) %>
-      </ul>
-      <% }) %>
-      <hr />
-    </div>
-  </a>
-  <% position++; }) } %>
-  <hr />
+<div id="checksContainer">
   <div class="d-flex mb-2 gap-1">
-    <form class="flex-grow-1 d-flex" action="/addCheck" method="POST">
-      <button type="submit" class="btn btn-success flex-grow-1">
-        Add Check
-      </button>
-    </form>
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-success flex-grow-1"
+      data-bs-toggle="modal"
+      data-bs-target="#addForm">
+      Add Check
+    </button>
+
+    <!-- Button Delete all -->
     <form class="flex-grow-1 d-flex" action="/deleteAll" method="post">
       <button type="submit" class="btn btn-danger flex-grow-1" id="deleteAll">
         Delete All
       </button>
     </form>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="addForm"
+      tabindex="-1"
+      aria-labelledby="addFormLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="addFormLabel">Add a check</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"></button>
+          </div>
+          <form action="/addCheck" method="POST">
+            <div class="modal-body">
+              <input
+                type="text"
+                name="check[restaurant]"
+                id="restaurant"
+                placeholder="Restaurant..."
+                class="form-control"
+                required />
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal">
+                Close
+              </button>
+              <button class="btn btn-success">Add</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="mb-5 d-flex flex-column-reverse">
+    <% if (checks.length == 0) { %>
+    <div class="alert alert-danger" role="alert">
+      You don't have any checks yet!
+    </div>
+
+    <% } else { let position = 0; checks.forEach(checks => { %>
+    <a class="text-decoration-none text-dark" href="/check/<%= position %>">
+      <div>
+        <p class="fs-5">
+          Check: <%= checks.restaurant %> - Price: <%= checks.price %>
+        </p>
+        <% checks.people.forEach(people => { %>
+        <p class="fs-6 fw-light fst-italic">People: <%= people.name %></p>
+        <ul>
+          <% people.orders.forEach(orders => { %>
+          <li>Order: <%= orders.food %></li>
+          <li>Quantity: <%= orders.quantity %></li>
+          <li>Price: <%= orders.price %></li>
+          <% }) %>
+        </ul>
+        <% }) %>
+        <hr />
+      </div>
+    </a>
+    <% position++; }) } %>
   </div>
 </div>
