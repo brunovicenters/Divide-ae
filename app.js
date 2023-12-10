@@ -45,7 +45,7 @@ app.post("/addCheck", (req, res) => {
       ":" +
       new Date().getMinutes() +
       ", " +
-      new Date().getDay() +
+      new Date().getDate() +
       "/" +
       (new Date().getMonth() + 1) +
       "/" +
