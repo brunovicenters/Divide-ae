@@ -1,5 +1,20 @@
 <% layout("layouts/boilerplate") %>
-<h1>Home</h1>
+<div class="d-flex justify-content-between align-items-center mt-2 mb-2">
+  <h1>Split Check</h1>
+
+<div>
+    <button class="btn">
+      <% if (theme === "light") { %>
+      <i class="bi bi-brightness-high fs-3"></i>
+      <% } else { %>
+        <i class="bi bi-moon fs-3"></i>
+      <% } %>
+    </button>
+    <button class="btn">
+      <i class="bi bi-translate fs-3"></i>
+    </button>
+</div>
+</div>
 
 <div id="checksContainer">
   <div class="d-flex flex-wrap mb-1 gap-1">
@@ -165,21 +180,20 @@
 
     <% } else { let position = 0; checks.forEach(checks => { %>
     <a class="text-decoration-none text-dark" href="/check/<%= position %>">
-      <div>
-        <p class="fs-5">
-          Check: <%= checks.restaurant %> - Price: <%= checks.price %>
-        </p>
+      <div class="card mb-3">
+        <div class="card-body">
+         <p class="card-title"> Check: <%= checks.restaurant %> - Price: <div%= checks.price %></p>
         <% checks.people.forEach(people => { %>
-        <p class="fs-6 fw-light fst-italic">People: <%= people.name %></p>
-        <ul>
-          <% people.orders.forEach(orders => { %>
-          <li>Order: <%= orders.food %></li>
-          <li>Quantity: <%= orders.quantity %></li>
-          <li>Price: <%= orders.price %></li>
-          <% }) %>
-        </ul>
+          <p class="card-text">People: <%= people.name %></p>
+          <ul class="card-text">
+            <% people.orders.forEach(orders => { %>
+            <li>Order: <%= orders.food %></li>
+            <li>Quantity: <%= orders.quantity %></li>
+            <li>Price: <%= orders.price * orders.quantity  %></li>
+            <% }) %>
+          </ul>
+       </div>
         <% }) %>
-        <hr />
       </div>
     </a>
     <% position++; }) } %>
