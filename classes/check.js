@@ -1,6 +1,6 @@
 class Check {
-  constructor(title, price, date, people) {
-    this.title = title;
+  constructor(restaurant, price, date, people) {
+    this.restaurant = restaurant;
     this.price = price;
     this.date = date;
     this.people = [people];
