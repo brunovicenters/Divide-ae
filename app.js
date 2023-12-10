@@ -7,7 +7,7 @@ const methodOverride = require("method-override");
 const app = express();
 
 const Check = require("./classes/check");
-const People = require("./classes/people");
+const Person = require("./classes/person");
 const Order = require("./classes/order");
 
 app.engine("ejs", ejsMate);
@@ -38,6 +38,7 @@ app.get("/check/:arrPos", (req, res) => {
 
 app.post("/addCheck", (req, res) => {
   const checks = store.get("checks");
+  const check = req.body.check;
   try {
     let date =
       new Date().getHours() +
@@ -46,22 +47,22 @@ app.post("/addCheck", (req, res) => {
       ", " +
       new Date().getDay() +
       "/" +
-      new Date().getMonth() +
+      (new Date().getMonth() + 1) +
       "/" +
       new Date().getFullYear();
     checks.push(
       new Check(
-        "it's another check",
-        Math.floor(Math.random() * 300),
+        check.restaurant,
+        check.totalPrice,
         date,
-        new People("Bruno", new Order("pizza", 1, 10))
+        new Person(check.person, new Order(check.dish, check.qty, check.price))
       )
     );
     store.set("checks", checks);
   } catch (error) {
     console.log(error);
   }
-  res.redirect("/");
+  res.redirect("/check/" + (checks.length - 1));
 });
 
 app.post("/deleteAll", (req, res) => {
