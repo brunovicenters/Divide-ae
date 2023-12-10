@@ -1,22 +1,22 @@
 <% layout("layouts/boilerplate") %>
-<div class="d-flex justify-content-between align-items-center mt-2 mb-2">
+<header class="d-flex justify-content-between align-items-center mt-2 mb-2">
   <h1>Split Check</h1>
 
-<div>
+  <div>
     <button class="btn">
       <% if (theme === "light") { %>
       <i class="bi bi-brightness-high fs-3"></i>
       <% } else { %>
-        <i class="bi bi-moon fs-3"></i>
+      <i class="bi bi-moon fs-3"></i>
       <% } %>
     </button>
     <button class="btn">
       <i class="bi bi-translate fs-3"></i>
     </button>
-</div>
-</div>
+  </div>
+</header>
 
-<div id="checksContainer">
+<main id="checksContainer">
   <div class="d-flex flex-wrap mb-1 gap-1">
     <!-- Button trigger modal -->
     <button
@@ -33,6 +33,7 @@
         Delete All
       </button>
     </form>
+
     <form
       action="/addCheck"
       method="POST"
@@ -72,6 +73,26 @@
                   required />
                 <div class="valid-feedback">That's a nice restaurant!</div>
                 <div class="invalid-feedback">What restaurant was it?</div>
+              </div>
+              <!-- Tip -->
+              <div class="mb-3">
+                <label for="tip" class="form-label">
+                  Checks's Service Tip:
+                </label>
+                <div class="input-group">
+                  <input
+                    type="number"
+                    name="check[tip]"
+                    id="tip"
+                    min="0"
+                    step="0.1"
+                    placeholder="Tip percentage..."
+                    class="form-control"
+                    required />
+                  <span class="input-group-text">%</span>
+                </div>
+                <div class="valid-feedback">That's a nice tip!</div>
+                <div class="invalid-feedback">How much are you tipping?</div>
               </div>
               <!-- Total Price -->
               <div class="mb-3">
@@ -134,6 +155,7 @@
                   step="1"
                   placeholder="Quantity..."
                   class="form-control"
+                  value="1"
                   required />
                 <div class="valid-feedback">It seems reasonable!</div>
                 <div class="invalid-feedback">How many did you order?</div>
@@ -172,30 +194,37 @@
 
   <hr />
 
+  <!-- Checks' Cards -->
   <div class="mb-5 d-flex flex-column-reverse">
     <% if (checks.length == 0) { %>
     <div class="alert alert-danger" role="alert">
       You don't have any checks yet!
     </div>
 
-    <% } else { let position = 0; checks.forEach(checks => { %>
+    <% } else { let position = 0; checks.forEach(check => { %>
     <a class="text-decoration-none text-dark" href="/check/<%= position %>">
       <div class="card mb-3">
         <div class="card-body">
-         <p class="card-title"> Check: <%= checks.restaurant %> - Price: <div%= checks.price %></p>
-        <% checks.people.forEach(people => { %>
-          <p class="card-text">People: <%= people.name %></p>
+          <p class="card-title text-capitalize fs-2 fw-semibold">
+            <%= check.restaurant %>
+          </p>
+
+          <hr />
+
+          <% check.people.forEach(person => { %>
+          <p class="card-text">People: <%= person.name %></p>
           <ul class="card-text">
-            <% people.orders.forEach(orders => { %>
-            <li>Order: <%= orders.food %></li>
-            <li>Quantity: <%= orders.quantity %></li>
-            <li>Price: <%= orders.price * orders.quantity  %></li>
+            <% person.orders.forEach(order => { %>
+            <li>Order: <%= order.food %></li>
+            <li>Quantity: <%= order.quantity %></li>
+            <li>Price: <%= order.price * order.quantity %></li>
+            <li>Price: <%= check.tip * 100 %>%</li>
             <% }) %>
           </ul>
-       </div>
+        </div>
         <% }) %>
       </div>
     </a>
-    <% position++; }) } %>
+    <% position++; })} %>
   </div>
-</div>
+</main>
