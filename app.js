@@ -85,7 +85,7 @@ app.post("/deleteAll", (req, res) => {
 });
 
 app.get("*", (req, res) => {
-  res.render("404", {
+  res.render("layouts/404", {
     theme: store.get("theme"),
     language: store.get("language"),
   });
