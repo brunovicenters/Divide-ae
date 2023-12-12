@@ -12,7 +12,71 @@
     </a>
   </div>
 </div>
-<h1 class="text-capitalize text-truncate"><%= check.restaurant %></h1>
-<h3>Price: <%= check.price %></h3>
-<h6><%= check.date %></h6>
+<h1 class="text-capitalize text-truncate text-center">
+  <%= check.restaurant %>
+</h1>
+<h3 class="text-center">Final Price: <%= brlCurrency.format(check.price) %></h3>
+<h6 class="text-center fw-light"><%= check.date %></h6>
+<div class="card border-black check mx-auto px-0">
+  <div class="card-body checkList">
+    <div class="mb-3">
+      <p class="text-capitalize fs-2 fw-semibold"><%= check.restaurant %></p>
+
+      <hr />
+
+      <p class="card-text">
+        Total price: <%= brlCurrency.format(check.price) %>
+      </p>
+      <p class="card-text">Tip: <%= check.tip * 100 %>%</p>
+      <p class="card-text">Date: <%= check.date %></p>
+      <p class="card-text">
+        <i class="bi bi-people fs-3"></i>
+        <%= check.people.length %>
+      </p>
+    </div>
+
+    <hr />
+
+    <div class="mb-3">
+      <p class="text-capitalize fs-2 fw-semibold"><%= check.restaurant %></p>
+
+      <hr />
+
+      <p class="card-text">
+        Total price: <%= brlCurrency.format(check.price) %>
+      </p>
+      <p class="card-text">Tip: <%= check.tip * 100 %>%</p>
+      <p class="card-text">Date: <%= check.date %></p>
+      <p class="card-text">
+        <i class="bi bi-people fs-3"></i>
+        <%= check.people.length %>
+      </p>
+    </div>
+
+    <hr />
+
+    <div>
+      <p class="text-capitalize fs-2 fw-semibold"><%= check.restaurant %></p>
+
+      <hr />
+
+      <p class="card-text">
+        Total price: <%= brlCurrency.format(check.price) %>
+      </p>
+      <p class="card-text">Tip: <%= check.tip * 100 %>%</p>
+      <p class="card-text">Date: <%= check.date %></p>
+      <p class="card-text">
+        <i class="bi bi-people fs-3"></i>
+        <%= check.people.length %>
+      </p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <div class="d-flex justify-content-between">
+      <h3>Price:</h3>
+      <h3><%= brlCurrency.format(check.price * (1 + check.tip)) %></h3>
+    </div>
+  </div>
+</div>
+
 <% } else{ layout("layouts/404") } %>
