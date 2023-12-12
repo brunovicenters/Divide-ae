@@ -36,7 +36,6 @@
             </div>
 
             <div class="modal-body">
-              <h5>Restaurant</h5>
               <!-- Restaurant's name -->
               <div class="mb-3">
                 <label for="restaurant" class="form-label">
@@ -184,6 +183,164 @@
           Pay: <%= brlCurrency.format(personPay * (1 + check.tip)) %>
         </span>
       </p>
+
+      <form
+        action="/editPerson/<%= position %>/<%= personPos %>?_method=PUT"
+        method="POST"
+        novalidate
+        class="validated-form w-100">
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="editPersonForm"
+          tabindex="-1"
+          aria-labelledby="editPersonFormLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 class="modal-title h2" id="editPersonFormLabel">Add a check</h2>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+              </div>
+
+              <div class="modal-body">
+                <!-- Person's name -->
+                <div class="mb-3">
+                  <label for="person" class="form-label">
+                    Person's name:
+                  </label>
+                  <input
+                    type="text"
+                    name="person[name]"
+                    id="person"
+                    placeholder="Person's name..."
+                    class="form-control"
+                    value="<%= person.name %>"
+                    required />
+                  <div class="invalid-feedback">Who is it?</div>
+                </div>
+
+                <hr />
+
+                <div>
+                  <h5>Dish 1:</h5>
+                  <div class="mb-3">
+                    <label for="food" class="form-label">Food:</label>
+                    <input
+                      type="text"
+                      name="person[dish[food]]"
+                      id="food"
+                      placeholder="Food's name..."
+                      class="form-control"
+                      value="<%= person.orders[0].food %>"
+                      required />
+                    <div class="invalid-feedback">What did you eat?</div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="qty" class="form-label">Quantity:</label>
+                    <input
+                      type="number"
+                      name="person[dish[qty]]"
+                      id="qty"
+                      min="1"
+                      step="1"
+                      placeholder="Quantity..."
+                      class="form-control"
+                      value="<%= person.orders[0].quantity %>"
+                      required />
+                    <div class="invalid-feedback">How many did you order?</div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="price" class="form-label">Price per dish:</label>
+                    <input
+                      type="text"
+                      name="person[dish[price]]"
+                      id="price"
+                      min="0.01"
+                      step="0.01"
+                      placeholder="Price per food..."
+                      class="form-control"
+                      value="<%= person.orders[0].price %>"
+                      required />
+                    <div class="invalid-feedback">
+                      How much did it cost per dish?
+                    </div>
+                  </div>
+                </div>
+
+                <% if (person.orders.length > 1) { %>
+                  <% for (let i = 1; i < person.orders.length; i++) { %>
+                    <hr />
+                    <div>
+                      <h5>Dish <%= i + 1 %>:</h5>
+                      <div class="mb-3">
+                        <label for="food" class="form-label">Food:</label>
+                        <input
+                          type="text"
+                          name="person[dish[food]]"
+                          id="food"
+                          placeholder="Food's name..."
+                          class="form-control"
+                          value="<%= person.orders[i].food %>"
+                          required />
+                        <div class="invalid-feedback">What did you eat?</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="qty" class="form-label">Quantity:</label>
+                        <input
+                          type="number"
+                          name="person[dish[qty]]"
+                          id="qty"
+                          min="1"
+                          step="1"
+                          placeholder="Quantity..."
+                          class="form-control"
+                          value="<%= person.orders[i].quantity %>"
+                          required />
+                        <div class="invalid-feedback">How many did you order?</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="price" class="form-label">Price per dish:</label>
+                        <input
+                          type="text"
+                          name="person[dish[price]]"
+                          id="price"
+                          min="0.01"
+                          step="0.01"
+                          placeholder="Price per food..."
+                          class="form-control"
+                          value="<%= person.orders[i].price %>"
+                          required />
+                        <div class="invalid-feedback">
+                          How much did it cost per dish?
+                        </div>
+                      </div>
+                    </div>
+                    <% } %>
+                  <% } %>
+
+                  
+
+              </div>
+
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal">
+                  Close
+                </button>
+                <button class="btn btn-success">Edit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
       <div class="d-flex justify-content-between">
         <div>
           <button
