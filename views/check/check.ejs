@@ -1,4 +1,4 @@
-<% layout("layouts/boilerplate") %>
+<% if(check) {%> <% layout("layouts/boilerplate") %>
 <div class="d-flex justify-content-between mt-2">
   <a href="/" type="btn" class="btn btn-outline-info">
     <i class="bi bi-arrow-left"></i>
@@ -15,3 +15,4 @@
 <h1 class="text-capitalize text-truncate"><%= check.restaurant %></h1>
 <h3>Price: <%= check.price %></h3>
 <h6><%= check.date %></h6>
+<% } else{ layout("layouts/404") } %>
