@@ -162,14 +162,15 @@
 <h6 class="text-center fw-light"><%= check.date %></h6>
 <div class="card shadow-lg border-black check mx-auto px-0">
   <div class="card-body checkList">
-    <% let totalCheck = 0; %>
+    <% let totalCheck = 0;
+       let personPos = 0;%>
     <% check.people.forEach(person => { let personPay = 0; %>
     <% person.orders.forEach(order => { personPay +=
     order.price*order.quantity; }) %>
     
     <div class="mb-3">
       <p class="text-capitalize fw-semibold d-flex justify-content-between">
-        <span class="fs-2 text-capitalize">
+        <span class="fs-2 text-capitalize text-truncate">
           <button
             type="btn"
             class="btn btn-outline-warning"
@@ -189,9 +190,72 @@
             type="btn"
             class="btn btn-outline-danger"
             data-bs-toggle="modal"
-            data-bs-target="#delPerson">
+            data-bs-target="#delPersonForm">
             <i class="bi bi-trash fs-3"></i>
           </button>
+
+          <form
+            action="/deletePerson/<%= position %>/<%= personPos %>?_method=DELETE"
+            method="POST"
+            novalidate
+            class="validated-form w-100">
+            <!-- Modal -->
+            <div
+              class="modal fade"
+              id="delPersonForm"
+              tabindex="-1"
+              aria-labelledby="delPersonFormLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                  <% if (check.people.length > 1) { %>
+                    <div class="modal-header">
+                      <h2 class="modal-title h2" id="delPersonFormLabel">Delete <%= person.name %>?</h2>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                      <p>Are you sure you want do delete <%= person.name %> from your check?</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                        Close
+                      </button>
+                      <button class="btn btn-danger">Delete</button>
+                    </div>
+                  <% } else {%>
+                    <div class="modal-header">
+                      <h2 class="modal-title h2" id="delPersonFormLabel">Can't delete!</h2>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                      <p>You can't leave your check without a person.</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                        Close
+                      </button>
+                    </div>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
         <div class="d-flex flex-column">
           <% person.orders.forEach(order => { %>
@@ -211,6 +275,7 @@
       </div>
     </div>
     <hr />
+    <% personPos++; %>
     <% totalCheck += personPay}); totalCheck *= (1 + check.tip); %>
     
   </div>
@@ -221,7 +286,7 @@
       <h3>
         <%= brlCurrency.format(totalCheck) %>
         <span class="text-danger">
-          <%= (totalCheck != check.price) ? "*" : "" %>
+          <%= (Math.trunc(totalCheck*100)/100 != check.price) ? "*" : "" %>
         </span>
       </h3>
     </div>
