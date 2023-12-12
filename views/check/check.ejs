@@ -16,70 +16,48 @@
   <%= check.restaurant %>
 </h1>
 <h3 class="text-center">Final Price: <%= brlCurrency.format(check.price) %></h3>
+<h6 class="text-center fw-light fst-italic">Tip: <%= check.tip * 100 %>%</h6>
 <h6 class="text-center fw-light"><%= check.date %></h6>
-<div class="card border-black check mx-auto px-0">
+<div class="card shadow-lg border-black check mx-auto px-0">
   <div class="card-body checkList">
+    <% let totalCheck = 0; check.people.forEach(person => { let personPay = 0;
+    %> <% person.orders.forEach(order => { personPay +=
+    order.price*order.quantity; }) %>
     <div class="mb-3">
-      <p class="text-capitalize fs-2 fw-semibold"><%= check.restaurant %></p>
-
-      <hr />
-
-      <p class="card-text">
-        Total price: <%= brlCurrency.format(check.price) %>
+      <p class="text-capitalize fw-semibold d-flex justify-content-between">
+        <span class="fs-2"><%= person.name %></span>
+        <span class="fs-2 fw-light">|</span>
+        <span class="fs-3">
+          Pay: <%= brlCurrency.format(personPay * (1 + check.tip)) %>
+        </span>
       </p>
-      <p class="card-text">Tip: <%= check.tip * 100 %>%</p>
-      <p class="card-text">Date: <%= check.date %></p>
-      <p class="card-text">
-        <i class="bi bi-people fs-3"></i>
-        <%= check.people.length %>
-      </p>
+      <div class="text-end">
+        <% person.orders.forEach(order => { %>
+        <p>
+          <%= order.food %> ........ <%= order.quantity %>x <%=
+          brlCurrency.format(order.price) %>
+        </p>
+        <% }) %>
+      </div>
     </div>
+    <% totalCheck += personPay}); totalCheck *= (1 + check.tip); %>
 
     <hr />
-
-    <div class="mb-3">
-      <p class="text-capitalize fs-2 fw-semibold"><%= check.restaurant %></p>
-
-      <hr />
-
-      <p class="card-text">
-        Total price: <%= brlCurrency.format(check.price) %>
-      </p>
-      <p class="card-text">Tip: <%= check.tip * 100 %>%</p>
-      <p class="card-text">Date: <%= check.date %></p>
-      <p class="card-text">
-        <i class="bi bi-people fs-3"></i>
-        <%= check.people.length %>
-      </p>
-    </div>
-
-    <hr />
-
-    <div>
-      <p class="text-capitalize fs-2 fw-semibold"><%= check.restaurant %></p>
-
-      <hr />
-
-      <p class="card-text">
-        Total price: <%= brlCurrency.format(check.price) %>
-      </p>
-      <p class="card-text">Tip: <%= check.tip * 100 %>%</p>
-      <p class="card-text">Date: <%= check.date %></p>
-      <p class="card-text">
-        <i class="bi bi-people fs-3"></i>
-        <%= check.people.length %>
-      </p>
-    </div>
   </div>
+
   <div class="card-footer">
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between align-items-center">
       <h3>Price:</h3>
-      <h3><%= brlCurrency.format(check.price * (1 + check.tip)) %></h3>
+      <h3>
+        <%= brlCurrency.format(totalCheck) %>
+        <span class="text-danger">
+          <%= (totalCheck != check.price) ? "*" : "" %>
+        </span>
+      </h3>
     </div>
   </div>
   <button type="button" class="btn btn-success">
     <i class="bi bi-person-add fs-3"></i>
   </button>
 </div>
-
 <% } else{ layout("layouts/404") } %>
