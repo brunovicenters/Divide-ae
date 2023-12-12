@@ -174,7 +174,7 @@
             type="button"
             class="btn btn-outline-warning"
             data-bs-toggle="modal"
-            data-bs-target="#editPersonForm">
+            data-bs-target="#editPersonForm<%= personPos %>">
             <i class="bi bi-pencil fs-3"></i>
           </button>
           <%= person.name %></span>
@@ -192,14 +192,14 @@
         <!-- Modal -->
         <div
           class="modal fade"
-          id="editPersonForm"
+          id="editPersonForm<%= personPos %>"
           tabindex="-1"
-          aria-labelledby="editPersonFormLabel"
+          aria-labelledby="editPersonFormLabel<%= personPos %>"
           aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
               <div class="modal-header">
-                <h2 class="modal-title h2" id="editPersonFormLabel">Add a check</h2>
+                <h2 class="modal-title h2" id="editPersonFormLabel<%= personPos %>">Add a check</h2>
                 <button
                   type="button"
                   class="btn-close"
@@ -352,7 +352,7 @@
             type="button"
             class="btn btn-outline-danger"
             data-bs-toggle="modal"
-            data-bs-target="#delPersonForm">
+            data-bs-target="#delPersonForm<%= personPos %>">
             <i class="bi bi-trash fs-3"></i>
           </button>
 
@@ -364,15 +364,15 @@
             <!-- Modal -->
             <div
               class="modal fade"
-              id="delPersonForm"
+              id="delPersonForm<%= personPos %>"
               tabindex="-1"
-              aria-labelledby="delPersonFormLabel"
+              aria-labelledby="delPersonFormLabel<%= personPos %>"
               aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                   <% if (check.people.length > 1) { %>
                     <div class="modal-header">
-                      <h2 class="modal-title h2" id="delPersonFormLabel">Delete <%= person.name %>?</h2>
+                      <h2 class="modal-title h2" id="delPersonFormLabel<%= personPos %>">Delete <%= person.name %>?</h2>
                       <button
                         type="button"
                         class="btn-close"
@@ -423,7 +423,7 @@
             type="button"
             class="btn btn-outline-success mt-3"
             data-bs-toggle="modal"
-            data-bs-target="#addOrderForm">
+            data-bs-target="#addOrderForm<%= personPos %>">
             <i class="bi bi-plus-circle fs-3"></i>
           </button>
 
@@ -435,14 +435,14 @@
             <!-- Modal -->
             <div
               class="modal fade"
-              id="addOrderForm"
+              id="addOrderForm<%= personPos %>"
               tabindex="-1"
-              aria-labelledby="addOrderFormLabel"
+              aria-labelledby="addOrderFormLabel<%= personPos %>"
               aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                      <h2 class="modal-title h2" id="addOrderFormLabel">Add order</h2>
+                      <h2 class="modal-title h2" id="addOrderFormLabel<%= personPos %>">Add order</h2>
                       <button
                         type="button"
                         class="btn-close"
