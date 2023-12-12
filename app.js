@@ -161,7 +161,25 @@ app.post("/addOrder/:arrPos/:personPos", (req, res) => {
   res.redirect("/check/" + (checks.length - 1));
 });
 
-app.post("/deleteAll", (req, res) => {
+app.get("/deleteOrder/:arrPos/:personPos/:orderPos", (req, res) => {
+  const checks = store.get("checks");
+  const check = checks[req.params.arrPos];
+  const person = check.people[req.params.personPos];
+  try {
+    checks.splice(req.params.arrPos, 1);
+    check.people.splice(req.params.personPos, 1);
+    check.date = getDate();
+    person.orders.splice(req.params.orderPos, 1);
+    check.people.push(person);
+    checks.push(check);
+    store.set("checks", checks);
+  } catch (error) {
+    console.log(error);
+  }
+  res.redirect("/check/" + (checks.length - 1));
+});
+
+app.delete("/deleteAll", (req, res) => {
   store.set("checks", []);
   res.redirect("/");
 });

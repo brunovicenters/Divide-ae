@@ -257,7 +257,7 @@
                   <div class="mb-3">
                     <label for="price" class="form-label">Price per dish:</label>
                     <input
-                      type="text"
+                      type="number"
                       name="person[dish[price]]"
                       id="price"
                       min="0.01"
@@ -276,7 +276,12 @@
                   <% for (let i = 1; i < person.orders.length; i++) { %>
                     <hr />
                     <div>
-                      <h5>Dish <%= i + 1 %>:</h5>
+                      <div class="d-flex justify-content-between h5">
+                        <span>Dish <%= i + 1 %>:</span> 
+                        <a href="/deleteOrder/<%= position %>/<%= personPos %>/<%= i %>" class="btn btn-outline-danger">
+                            <i class="bi bi-trash fs-3"></i>
+                        </a>
+                      </div>
                       <div class="mb-3">
                         <label for="food" class="form-label">Food:</label>
                         <input
@@ -474,7 +479,7 @@
                       <div class="mb-3">
                         <label for="price" class="form-label">Price per dish:</label>
                         <input
-                          type="text"
+                          type="number"
                           name="order[price]"
                           id="price"
                           min="0.01"
@@ -604,7 +609,7 @@
             <div class="mb-3">
               <label for="price" class="form-label">Price per dish:</label>
               <input
-                type="text"
+                type="number"
                 name="person[price]"
                 id="price"
                 min="0.01"
