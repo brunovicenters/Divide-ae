@@ -8,7 +8,7 @@
       type="btn" 
       class="btn btn-outline-warning" 
       data-bs-toggle="modal"
-      data-bs-target="#editForm">
+      data-bs-target="#editCheckForm">
       <i class="bi bi-pencil"></i>
     </button>
 
@@ -20,14 +20,14 @@
       <!-- Modal -->
       <div
         class="modal fade"
-        id="editForm"
+        id="editCheckForm"
         tabindex="-1"
-        aria-labelledby="editFormLabel"
+        aria-labelledby="editCheckFormLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content">
             <div class="modal-header">
-              <h2 class="modal-title h2" id="editFormLabel">Add a check</h2>
+              <h2 class="modal-title h2" id="editCheckFormLabel">Add a check</h2>
               <button
                 type="button"
                 class="btn-close"
@@ -124,19 +124,45 @@
     
     <div class="mb-3">
       <p class="text-capitalize fw-semibold d-flex justify-content-between">
-        <span class="fs-2"><%= person.name %></span>
+        <span class="fs-2 text-capitalize">
+          <button
+            type="btn"
+            class="btn btn-outline-warning"
+            data-bs-toggle="modal"
+            data-bs-target="#editPersonForm">
+            <i class="bi bi-pencil fs-3"></i>
+          </button>
+          <%= person.name %></span>
         <span class="fs-2 fw-light">|</span>
         <span class="fs-3">
           Pay: <%= brlCurrency.format(personPay * (1 + check.tip)) %>
         </span>
       </p>
-      <div class="text-end">
-        <% person.orders.forEach(order => { %>
-          <p>
-            <%= order.food %> ........ <%= order.quantity %>x <%=
-            brlCurrency.format(order.price) %>
-          </p>
-        <% }) %>
+      <div class="d-flex justify-content-between">
+        <div>
+          <button
+            type="btn"
+            class="btn btn-outline-danger"
+            data-bs-toggle="modal"
+            data-bs-target="#delPerson">
+            <i class="bi bi-trash fs-3"></i>
+          </button>
+        </div>
+        <div class="d-flex flex-column">
+          <% person.orders.forEach(order => { %>
+            <p class="text-capitalize">
+              <%= order.food %> ........ <%= order.quantity %>x <%=
+              brlCurrency.format(order.price) %>
+            </p>
+          <% }) %>
+          <button
+            type="btn"
+            class="btn btn-outline-success ms-auto"
+            data-bs-toggle="modal"
+            data-bs-target="#addFoodForm">
+            <i class="bi bi-plus-circle fs-3"></i>
+          </button>
+        </div>
       </div>
     </div>
     <hr />
