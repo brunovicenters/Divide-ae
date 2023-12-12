@@ -170,7 +170,7 @@ app.get("/deleteOrder/:arrPos/:personPos/:orderPos", (req, res) => {
     check.people.splice(req.params.personPos, 1);
     check.date = getDate();
     person.orders.splice(req.params.orderPos, 1);
-    check.people.push(person);
+    check.people.splice(req.params.personPos, 0, person);
     checks.push(check);
     store.set("checks", checks);
   } catch (error) {
