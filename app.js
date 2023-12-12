@@ -60,6 +60,7 @@ app.get("/check/:arrPos", (req, res) => {
   res.render("check/check", {
     check: check,
     brlCurrency: brlCurrency,
+    position: req.params.arrPos,
     theme: store.get("theme"),
     language: store.get("language"),
   });
@@ -78,6 +79,24 @@ app.post("/addCheck", (req, res) => {
         check.tip / 100
       )
     );
+    store.set("checks", checks);
+  } catch (error) {
+    console.log(error);
+  }
+  res.redirect("/check/" + (checks.length - 1));
+});
+
+app.post("/addPerson/:arrPos", (req, res) => {
+  const checks = store.get("checks");
+  const check = store.get("checks")[req.params.arrPos];
+  const person = req.body.person;
+  try {
+    checks.splice(req.params.arrPos, 1);
+    check.date = getDate();
+    check.people.push(
+      new Person(person.name, new Order(person.dish, person.qty, person.price))
+    );
+    checks.push(check);
     store.set("checks", checks);
   } catch (error) {
     console.log(error);
