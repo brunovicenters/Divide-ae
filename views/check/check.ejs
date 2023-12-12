@@ -503,7 +503,7 @@
         </div>
         <div>
           <% person.orders.forEach(order => { %>
-            <p class="text-capitalize">
+            <p class="text-capitalize text-end">
               <%= order.food %> ........ <%= order.quantity %>x <%=
               brlCurrency.format(order.price) %>
             </p>
