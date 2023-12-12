@@ -59,6 +59,7 @@ app.get("/check/:arrPos", (req, res) => {
   const check = store.get("checks")[req.params.arrPos];
   res.render("check/check", {
     check: check,
+    brlCurrency: brlCurrency,
     theme: store.get("theme"),
     language: store.get("language"),
   });
