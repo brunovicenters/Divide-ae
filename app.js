@@ -86,9 +86,27 @@ app.post("/addCheck", (req, res) => {
   res.redirect("/check/" + (checks.length - 1));
 });
 
+app.put("/editCheck/:arrPos", (req, res) => {
+  const checks = store.get("checks");
+  const check = checks[req.params.arrPos];
+  const c = req.body.check;
+  try {
+    checks.splice(req.params.arrPos, 1);
+    check.date = getDate();
+    check.restaurant = c.restaurant;
+    check.tip = c.tip / 100;
+    check.price = c.totalPrice;
+    checks.push(check);
+    store.set("checks", checks);
+  } catch (error) {
+    console.log(error);
+  }
+  res.redirect("/check/" + (checks.length - 1));
+});
+
 app.post("/addPerson/:arrPos", (req, res) => {
   const checks = store.get("checks");
-  const check = store.get("checks")[req.params.arrPos];
+  const check = checks[req.params.arrPos];
   const person = req.body.person;
   try {
     checks.splice(req.params.arrPos, 1);
