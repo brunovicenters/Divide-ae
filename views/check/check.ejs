@@ -257,20 +257,13 @@
             </div>
           </form>
         </div>
-        <div class="d-flex flex-column">
+        <div>
           <% person.orders.forEach(order => { %>
             <p class="text-capitalize">
               <%= order.food %> ........ <%= order.quantity %>x <%=
               brlCurrency.format(order.price) %>
             </p>
           <% }) %>
-          <button
-            type="btn"
-            class="btn btn-outline-success ms-auto"
-            data-bs-toggle="modal"
-            data-bs-target="#addFoodForm">
-            <i class="bi bi-plus-circle fs-3"></i>
-          </button>
         </div>
       </div>
     </div>
