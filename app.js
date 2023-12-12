@@ -144,6 +144,23 @@ app.delete("/deletePerson/:arrPos/:personPos", (req, res) => {
   res.redirect("/check/" + (checks.length - 1));
 });
 
+app.post("/addOrder/:arrPos/:personPos", (req, res) => {
+  const checks = store.get("checks");
+  const check = checks[req.params.arrPos];
+  const person = check.people[req.params.personPos];
+  const order = req.body.order;
+  try {
+    checks.splice(req.params.arrPos, 1);
+    check.date = getDate();
+    person.orders.push(new Order(order.food, order.qty, order.price));
+    checks.push(check);
+    store.set("checks", checks);
+  } catch (error) {
+    console.log(error);
+  }
+  res.redirect("/check/" + (checks.length - 1));
+});
+
 app.post("/deleteAll", (req, res) => {
   store.set("checks", []);
   res.redirect("/");
