@@ -1,0 +1,9 @@
+.check {
+  max-height: 70vh;
+  max-width: 90vw;
+}
+.checkList {
+  overflow-y: scroll;
+  max-height: 100vh;
+  max-width: 100vw;
+}
