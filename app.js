@@ -104,6 +104,13 @@ app.put("/editCheck/:arrPos", (req, res) => {
   res.redirect("/check/" + (checks.length - 1));
 });
 
+app.delete("/deleteCheck/:arrPos", (req, res) => {
+  const checks = store.get("checks");
+  checks.splice(req.params.arrPos, 1);
+  store.set("checks", checks);
+  res.redirect("/");
+});
+
 app.post("/addPerson/:arrPos", (req, res) => {
   const checks = store.get("checks");
   const check = checks[req.params.arrPos];
