@@ -31,6 +31,21 @@ const brlCurrency = new Intl.NumberFormat("pt-BR", {
   minimumFractionDigits: 2,
 });
 
+const getDate = () => {
+  const d = new Date();
+  let h = d.getHours();
+  let min =
+    d.getMinutes().toString().length == 1
+      ? "0" + d.getMinutes()
+      : d.getMinutes();
+  let day = d.getDate();
+  let month = d.getMonth() + 1;
+  let year = d.getFullYear();
+
+  let date = h + ":" + min + ", " + day + "/" + month + "/" + year;
+  return date;
+};
+
 app.get("/", (req, res) => {
   res.render("check/home", {
     checks: store.get("checks"),
@@ -53,21 +68,11 @@ app.post("/addCheck", (req, res) => {
   const checks = store.get("checks");
   const check = req.body.check;
   try {
-    let date =
-      new Date().getHours() +
-      ":" +
-      new Date().getMinutes() +
-      ", " +
-      new Date().getDate() +
-      "/" +
-      (new Date().getMonth() + 1) +
-      "/" +
-      new Date().getFullYear();
     checks.push(
       new Check(
         check.restaurant,
         check.totalPrice,
-        date,
+        getDate(),
         new Person(check.person, new Order(check.dish, check.qty, check.price)),
         check.tip / 100
       )
