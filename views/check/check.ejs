@@ -4,12 +4,109 @@
     <i class="bi bi-arrow-left"></i>
   </a>
   <div class="d-flex gap-1">
-    <a href="" type="btn" class="btn btn-outline-warning">
+    <button 
+      type="btn" 
+      class="btn btn-outline-warning" 
+      data-bs-toggle="modal"
+      data-bs-target="#editForm">
       <i class="bi bi-pencil"></i>
-    </a>
-    <a href="" type="btn" class="btn btn-outline-danger">
+    </button>
+
+    <form
+      action="/editCheck/<%= position %>?_method=PUT"
+      method="POST"
+      novalidate
+      class="validated-form w-100">
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="editForm"
+        tabindex="-1"
+        aria-labelledby="editFormLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title h2" id="editFormLabel">Add a check</h2>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+              <h5>Restaurant</h5>
+              <!-- Restaurant's name -->
+              <div class="mb-3">
+                <label for="restaurant" class="form-label">
+                  Restaurant's name:
+                </label>
+                <input
+                  type="text"
+                  name="check[restaurant]"
+                  id="restaurant"
+                  placeholder="Restaurant..."
+                  class="form-control"
+                  value="<%= check.restaurant %>"
+                  required />
+                <div class="invalid-feedback">What restaurant was it?</div>
+              </div>
+              <!-- Tip -->
+              <div class="mb-3">
+                <label for="tip" class="form-label">
+                  Checks's Service Tip:
+                </label>
+                <div class="input-group">
+                  <input
+                    type="number"
+                    name="check[tip]"
+                    id="tip"
+                    min="0"
+                    step="0.01"
+                    placeholder="Tip percentage..."
+                    class="form-control"
+                    value="<%= check.tip * 100 %>"
+                    required />
+                  <span class="input-group-text">%</span>
+                  <div class="invalid-feedback">How much are you tipping?</div>
+                </div>
+              </div>
+              <!-- Total Price -->
+              <div class="mb-3">
+                <label for="totalPrice" class="form-label">
+                  Checks's Total Price:
+                </label>
+                <input
+                  type="number"
+                  name="check[totalPrice]"
+                  id="totalPrice"
+                  min="0.01"
+                  step="0.01"
+                  placeholder="Total price..."
+                  class="form-control"
+                  value="<%= check.price %>"
+                  required />
+                <div class="invalid-feedback">What's the total price?</div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal">
+                Close
+              </button>
+              <button class="btn btn-success">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <button type="btn" class="btn btn-outline-danger">
       <i class="bi bi-trash"></i>
-    </a>
+    </button>
   </div>
 </div>
 <h1 class="text-capitalize text-truncate text-center">
@@ -79,7 +176,7 @@
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
-            <h2 class="modal-title h2" id="addFormLabel">Add a check</h2>
+            <h2 class="modal-title h2" id="addFormLabel">Add a person</h2>
             <button
               type="button"
               class="btn-close"
@@ -137,8 +234,8 @@
                 type="text"
                 name="person[price]"
                 id="price"
-                min="0.1"
-                step="0.1"
+                min="0.01"
+                step="0.01"
                 placeholder="Price per dish..."
                 class="form-control"
                 required />
