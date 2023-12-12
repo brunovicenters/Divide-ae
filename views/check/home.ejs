@@ -31,7 +31,7 @@
     </button>
 
     <!-- Button Delete all -->
-    <form class="flex-grow-1 d-flex" action="/deleteAll" method="post">
+    <form class="flex-grow-1 d-flex" action="/deleteAll?_method=DELETE" method="post">
       <button type="submit" class="btn btn-danger flex-grow-1" id="deleteAll">
         Delete All
       </button>
@@ -160,7 +160,7 @@
               <div class="mb-3">
                 <label for="price" class="form-label">Price per dish:</label>
                 <input
-                  type="text"
+                  type="number"
                   name="check[price]"
                   id="price"
                   min="0.01"
