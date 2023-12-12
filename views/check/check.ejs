@@ -1,11 +1,11 @@
 <% if(check) {%> <% layout("layouts/boilerplate") %>
 <div class="d-flex justify-content-between mt-2">
-  <a href="/" type="btn" class="btn btn-outline-info">
+  <a href="/" type="button" class="btn btn-outline-info">
     <i class="bi bi-arrow-left"></i>
   </a>
   <div class="d-flex gap-1">
     <button 
-      type="btn" 
+      type="button" 
       class="btn btn-outline-warning" 
       data-bs-toggle="modal"
       data-bs-target="#editCheckForm">
@@ -104,7 +104,7 @@
     </form>
 
     <button 
-      type="btn" 
+      type="button" 
       class="btn btn-outline-danger"
       data-bs-toggle="modal"
       data-bs-target="#delCheckForm">
@@ -171,7 +171,7 @@
       <p class="text-capitalize fw-semibold d-flex justify-content-between">
         <span class="fs-2 text-capitalize text-truncate">
           <button
-            type="btn"
+            type="button"
             class="btn btn-outline-warning"
             data-bs-toggle="modal"
             data-bs-target="#editPersonForm">
@@ -344,7 +344,7 @@
       <div class="d-flex justify-content-between">
         <div>
           <button
-            type="btn"
+            type="button"
             class="btn btn-outline-danger"
             data-bs-toggle="modal"
             data-bs-target="#delPersonForm">
@@ -409,6 +409,93 @@
                       </button>
                     </div>
                   <% } %>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <button
+            type="button"
+            class="btn btn-outline-success mt-2"
+            data-bs-toggle="modal"
+            data-bs-target="#addOrderForm">
+            <i class="bi bi-plus-circle fs-3"></i>
+          </button>
+
+          <form
+            action="/addOrder/<%= position %>/<%= personPos %>"
+            method="POST"
+            novalidate
+            class="validated-form w-100">
+            <!-- Modal -->
+            <div
+              class="modal fade"
+              id="addOrderForm"
+              tabindex="-1"
+              aria-labelledby="addOrderFormLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                      <h2 class="modal-title h2" id="addOrderFormLabel">Add order</h2>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                      <div class="mb-3">
+                        <label for="food" class="form-label">Food:</label>
+                        <input
+                          type="text"
+                          name="person[dish[food]]"
+                          id="food"
+                          placeholder="Food's name..."
+                          class="form-control"
+                          required />
+                        <div class="invalid-feedback">What did you eat?</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="qty" class="form-label">Quantity:</label>
+                        <input
+                          type="number"
+                          name="person[dish[qty]]"
+                          id="qty"
+                          min="1"
+                          step="1"
+                          placeholder="Quantity..."
+                          class="form-control"
+                          value="1"
+                          required />
+                        <div class="invalid-feedback">How many did you order?</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="price" class="form-label">Price per dish:</label>
+                        <input
+                          type="text"
+                          name="person[dish[price]]"
+                          id="price"
+                          min="0.01"
+                          step="0.01"
+                          placeholder="Price per food..."
+                          class="form-control"
+                          required />
+                        <div class="invalid-feedback">
+                          How much did it cost per dish?
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                        Close
+                      </button>
+                      <button class="btn btn-success">Add</button>
+                    </div>
                 </div>
               </div>
             </div>
