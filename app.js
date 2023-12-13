@@ -50,7 +50,7 @@ const getDate = () => {
 app.get("/", (req, res) => {
   res.render("check/home", {
     checks: store.get("checks"),
-    brlCurrency: brlCurrency,
+    currency: brlCurrency,
     theme: store.get("theme"),
     language: store.get("language"),
   });
@@ -60,7 +60,7 @@ app.get("/check/:arrPos", (req, res) => {
   const check = store.get("checks")[req.params.arrPos];
   res.render("check/check", {
     check: check,
-    brlCurrency: brlCurrency,
+    currency: brlCurrency,
     position: req.params.arrPos,
     theme: store.get("theme"),
     language: store.get("language"),

@@ -156,7 +156,7 @@
 <h1 class="text-capitalize text-truncate text-center">
   <%= check.restaurant %>
 </h1>
-<h3 class="text-center">Final Price: <%= brlCurrency.format(check.price) %></h3>
+<h3 class="text-center">Final Price: <%= currency.format(check.price) %></h3>
 <h6 class="text-center fw-light fst-italic">Tip: <%= check.tip * 100 %>&#37;</h6>
 <h6 class="text-center fw-light"><%= check.date %></h6>
 <div class="card shadow-lg border-black check mx-auto px-0">
@@ -180,7 +180,7 @@
           <%= person.name %></span>
         <span class="fs-2 fw-light">|</span>
         <span class="fs-3">
-          Pay: <%= brlCurrency.format(personPay * (1 + check.tip)) %>
+          Pay: <%= currency.format(personPay * (1 + check.tip)) %>
         </span>
       </p>
 
@@ -510,7 +510,7 @@
           <% person.orders.forEach(order => { %>
             <p class="text-capitalize text-end">
               <%= order.food %> ........ <%= order.quantity %>x <%=
-              brlCurrency.format(order.price) %>
+              currency.format(order.price) %>
             </p>
           <% }) %>
         </div>
@@ -526,7 +526,7 @@
     <div class="d-flex justify-content-between align-items-center">
       <h3>Price:</h3>
       <h3>
-        <%= brlCurrency.format(totalCheck) %>
+        <%= currency.format(totalCheck) %>
         <span class="text-danger">
           <%= (Math.trunc(totalCheck*100)/100 != check.price) ? "*" : "" %>
         </span>
