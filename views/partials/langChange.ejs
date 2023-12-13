@@ -1,0 +1,51 @@
+<!-- <form
+    action="/deleteAll?_method=DELETE"
+    method="POST"
+    novalidate
+    class="validated-form w-100"> -->
+    <!-- Modal -->
+    <div
+        class="modal fade"
+        id="langChange"
+        tabindex="-1"
+        aria-labelledby="langChangeLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title h2" id="langChangeLabel">Select a language</h2>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body d-flex flex-column gap-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input switches" type="checkbox" role="switch" id="flexSwitchEn" name="en" onchange="activeLang('en')">
+                        <label class="form-check-label" for="flexSwitchEn">English</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input switches" type="checkbox" role="switch" id="flexSwitchBr" name="br" onchange="activeLang('br')">
+                        <label class="form-check-label" for="flexSwitchBr">Português</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input switches" type="checkbox" role="switch" id="flexSwitchIt" name="it" onchange="activeLang('it')" disabled>
+                        <label class="form-check-label" for="flexSwitchIt">Italiano</label>
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <!-- <button class="btn btn-danger">Delete</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- </form> -->
