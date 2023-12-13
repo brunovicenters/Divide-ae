@@ -1,8 +1,8 @@
-<!-- <form
-    action="/deleteAll?_method=DELETE"
+<form
+    action="/changeLanguage"
     method="POST"
     novalidate
-    class="validated-form w-100"> -->
+    class="validated-form w-100">
     <!-- Modal -->
     <div
         class="modal fade"
@@ -23,16 +23,38 @@
 
                 <div class="modal-body d-flex flex-column gap-3">
                     <div class="form-check form-switch">
-                        <input class="form-check-input switches" type="checkbox" role="switch" id="flexSwitchEn" name="en" onchange="activeLang('en')">
-                        <label class="form-check-label" for="flexSwitchEn">English</label>
+                        <input
+                            class="form-check-input switches"
+                            type="checkbox"
+                            role="switch"
+                            id="en"
+                            name="language"
+                            value="en"
+                            onchange="activeLang('en')" <%= language == 'en' ? 'checked' : '' %>>
+                        <label class="form-check-label" for="en">English</label>
                     </div>
                     <div class="form-check form-switch">
-                        <input class="form-check-input switches" type="checkbox" role="switch" id="flexSwitchBr" name="br" onchange="activeLang('br')">
-                        <label class="form-check-label" for="flexSwitchBr">Português</label>
+                        <input
+                            class="form-check-input switches"
+                            type="checkbox"
+                            role="switch"
+                            id="pt"
+                            name="language"
+                            value="pt"
+                            onchange="activeLang('pt')" <%= language == 'pt' ? 'checked' : '' %>>
+                        <label class="form-check-label" for="pt">Português - Brasil</label>
                     </div>
                     <div class="form-check form-switch">
-                        <input class="form-check-input switches" type="checkbox" role="switch" id="flexSwitchIt" name="it" onchange="activeLang('it')" disabled>
-                        <label class="form-check-label" for="flexSwitchIt">Italiano</label>
+                        <input
+                            class="form-check-input switches"
+                            type="checkbox"
+                            role="switch"
+                            id="it"
+                            name="language"
+                            value="it"
+                            onchange="activeLang('it')" <%= language == 'it' ? 'checked' : '' %>
+                            disabled>
+                        <label class="form-check-label" for="it">Italiano</label>
                     </div>
                 </div>
                 
@@ -43,9 +65,9 @@
                         data-bs-dismiss="modal">
                         Close
                     </button>
-                    <!-- <button class="btn btn-danger">Delete</button> -->
+                    <button class="btn btn-primary">Change</button>
                 </div>
             </div>
         </div>
     </div>
-<!-- </form> -->
+</form>
