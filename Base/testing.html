@@ -3,11 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <title>Testing</title>
   </head>
   <body>
+    <div class="form-check form-switch">
+      <input class="form-check-input switches" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="en" onchange="activeLang('en')">
+      <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+    </div>
+    <div class="form-check form-switch">
+      <input class="form-check-input switches" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="br" onchange="activeLang('br')">
+      <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
+    </div>
     <button id="add">Add</button>
     <div id="container"></div>
     <script src="testing.js"></script>
+    <script>
+      const activeLang = (lang) => {
+        const switches = document.querySelectorAll('.form-check-input');
+        switches.forEach(checkbox => {
+          // console.log(checkbox)
+          if(checkbox.name == lang){
+            checkbox.checked=true;
+          } else {
+            checkbox.checked=false;
+          }
+        })
+      }
+    </script>
   </body>
 </html>
