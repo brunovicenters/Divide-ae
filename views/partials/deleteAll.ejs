@@ -1,0 +1,52 @@
+<form
+    action="/deleteAll?_method=DELETE"
+    method="POST"
+    novalidate
+    class="validated-form w-100">
+    <!-- Modal -->
+    <div
+        class="modal fade"
+        id="delAllCheckForm"
+        tabindex="-1"
+        aria-labelledby="delAllCheckFormLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title h2" id="delAllCheckFormLabel">Delete all checks</h2>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <% if(checks.length > 0) { %>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete all checks?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button class="btn btn-danger">Delete</button>
+                    </div>
+                <% } else { %>
+                    <div class="modal-body">
+                        <p>There are no checks to delete.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</form>
