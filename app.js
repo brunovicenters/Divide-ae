@@ -37,6 +37,12 @@ const brlCurrency = new Intl.NumberFormat("pt-BR", {
   minimumFractionDigits: 2,
 });
 
+const eurCurrency = new Intl.NumberFormat("en-DE", {
+  style: "currency",
+  currency: "EUR",
+  minimumFractionDigits: 2,
+});
+
 const getDate = () => {
   const d = new Date();
   let h =
@@ -56,7 +62,12 @@ const getDate = () => {
 app.get("/", (req, res) => {
   res.render("check/home", {
     checks: store.get("checks"),
-    currency: store.get("language") == "en" ? usdCurrency : brlCurrency,
+    currency:
+      store.get("language") == "en"
+        ? usdCurrency
+        : store.get("language") == "pt"
+        ? brlCurrency
+        : eurCurrency,
     theme: store.get("theme"),
     language: store.get("language"),
   });
@@ -66,7 +77,12 @@ app.get("/check/:arrPos", (req, res) => {
   const check = store.get("checks")[req.params.arrPos];
   res.render("check/check", {
     check: check,
-    currency: store.get("language") == "en" ? usdCurrency : brlCurrency,
+    currency:
+      store.get("language") == "en"
+        ? usdCurrency
+        : store.get("language") == "pt"
+        ? brlCurrency
+        : eurCurrency,
     position: req.params.arrPos,
     theme: store.get("theme"),
     language: store.get("language"),
@@ -215,6 +231,11 @@ app.get("/deleteOrder/:arrPos/:personPos/:orderPos", (req, res) => {
     console.log(error);
   }
   res.redirect("/check/" + (checks.length - 1));
+});
+
+app.post("/changeLanguage", (req, res) => {
+  store.set("language", req.body.language);
+  res.redirect("/");
 });
 
 app.delete("/deleteAll", (req, res) => {
