@@ -92,6 +92,7 @@
                     step="0.01"
                     placeholder="Tip percentage..."
                     class="form-control"
+                    onchange="this.value = this.value.replace(/,/g, '.')"
                     required />
                     <span class="input-group-text">%</span>
                     <div class="invalid-feedback">How much are you tipping?</div>
@@ -110,6 +111,7 @@
                   step="0.01"
                   placeholder="Total price..."
                   class="form-control"
+                  onchange="this.value = this.value.replace(/,/g, '.')"
                   required />
                 <div class="invalid-feedback">What's the total price?</div>
               </div>
@@ -169,6 +171,7 @@
                   step="0.01"
                   placeholder="Price per dish..."
                   class="form-control"
+                  onchange="this.value = this.value.replace(/,/g, '.')"
                   required />
                   <div class="invalid-feedback">
                     How much did it cost per dish?

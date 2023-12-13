@@ -66,6 +66,7 @@
                     placeholder="Tip percentage..."
                     class="form-control"
                     value="<%= check.tip * 100 %>"
+                    onchange="this.value = this.value.replace(/,/g, '.')"
                     required />
                   <span class="input-group-text">%</span>
                   <div class="invalid-feedback">How much are you tipping?</div>
@@ -85,6 +86,7 @@
                   placeholder="Total price..."
                   class="form-control"
                   value="<%= check.price %>"
+                  onchange="this.value = this.value.replace(/,/g, '.')"
                   required />
                 <div class="invalid-feedback">What's the total price?</div>
               </div>
@@ -265,6 +267,7 @@
                       placeholder="Price per food..."
                       class="form-control"
                       value="<%= person.orders[0].price %>"
+                      onchange="this.value = this.value.replace(/,/g, '.')"
                       required />
                     <div class="invalid-feedback">
                       How much did it cost per dish?
@@ -486,6 +489,7 @@
                           step="0.01"
                           placeholder="Price per food..."
                           class="form-control"
+                          onchange="this.value = this.value.replace(/,/g, '.')"
                           required />
                         <div class="invalid-feedback">
                           How much did it cost per dish?
@@ -616,6 +620,7 @@
                 step="0.01"
                 placeholder="Price per dish..."
                 class="form-control"
+                onchange="this.value = this.value.replace(/,/g, '.')"
                 required />
               <div class="invalid-feedback">How much did it cost per dish?</div>
             </div>
