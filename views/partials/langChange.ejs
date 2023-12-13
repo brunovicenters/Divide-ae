@@ -13,7 +13,11 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="modal-title h2" id="langChangeLabel">Select a language</h2>
+                    <h2 class="modal-title h2" id="langChangeLabel">
+                        <%= language == "en" ? "Select a language"
+                        : language == "pt" ? "Selecione um idioma"
+                        : "Developing" %>
+                    </h2>
                     <button
                         type="button"
                         class="btn-close"
@@ -63,9 +67,15 @@
                         type="button"
                         class="btn btn-secondary"
                         data-bs-dismiss="modal">
-                        Close
+                        <%= language == "en" ? "Close"
+                            : language == "pt" ? "Fechar"
+                            : "Developing" %>
                     </button>
-                    <button class="btn btn-primary">Change</button>
+                    <button class="btn btn-primary">
+                        <%= language == "en" ? "Change"
+                            : language == "pt" ? "Trocar"
+                            : "Developing" %>
+                    </button>
                 </div>
             </div>
         </div>

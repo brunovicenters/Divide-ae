@@ -30,16 +30,20 @@
       class="btn btn-success flex-grow-1"
       data-bs-toggle="modal"
       data-bs-target="#addCheckForm">
-      Add Check
+      <%= language == "en" ? "Add check" :
+      language == "pt" ? "Adicionar conta" :
+      "Developing" %>
     </button>
 
     <!-- Button Delete all -->
-    <button 
-    type="submit" 
-    class="btn btn-danger flex-grow-1" 
-    data-bs-toggle="modal"
-    data-bs-target="#delAllCheckForm">
-      Delete All
+    <button
+      type="submit"
+      class="btn btn-danger flex-grow-1"
+      data-bs-toggle="modal"
+      data-bs-target="#delAllCheckForm">
+      <%= language == "en" ? "Delete all" :
+      language == "pt" ? "Delete todas" :
+      "Developing" %>
     </button>
 
     <!-- MODAL ADD CHECK -->
@@ -57,7 +61,9 @@
   <div class="mb-5 d-flex flex-column-reverse">
     <% if (checks.length == 0) { %>
     <div class="alert alert-danger" role="alert">
-      You don't have any checks yet!
+      <%= language == "en" ? "You don't have any checks yet!" :
+      language == "pt" ? "Você ainda não possui contas!"
+      : "Developing" %>
     </div>
 
     <% } else { let position = 0; checks.forEach(check => { %>
@@ -71,10 +77,23 @@
           <hr />
 
           <p class="card-text">
-            Total price: <%= currency.format(check.price) %>
+            <%= language == "en" ? "Total price: "
+                : language == "pt" ? "Preço total: "
+                : "Developing" %>
+            <%= currency.format(check.price) %>
           </p>
-          <p class="card-text">Tip: <%= check.tip * 100 %>%</p>
-          <p class="card-text">Date: <%= check.date %></p>
+          <p class="card-text">
+            <%= language == "en" ? "Tip: "
+                : language == "pt" ? "Taxa: "
+                : "Developing" %>
+            <%= check.tip * 100 %>%
+          </p>
+          <p class="card-text">
+            <%= language == "en" ? "Date: "
+                : language == "pt" ? "Data: "
+                : "Developing" %>
+            <%= check.date %>
+          </p>
           <p class="card-text">
             <i class="bi bi-people fs-3"></i>
             <%= check.people.length %>
