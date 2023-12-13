@@ -406,10 +406,10 @@
   <div class="card-footer">
     <div class="d-flex justify-content-between align-items-center">
       <h3>Price:</h3>
-      <h3 class="<%= (Math.trunc(totalCheck*100)/100 != check.price) ? "text-danger" : "text-success"  %>">
+      <h3 class="<%= (Math.round((totalCheck + Number.EPSILON) * 100) / 100 != check.price) ? "text-danger" : "text-success"  %>">
         <%= currency.format(totalCheck) %>
         <span class="text-danger">
-          <%= (Math.trunc(totalCheck*100)/100 != check.price) ? "*" : "" %>
+          <%= (Math.round((totalCheck + Number.EPSILON) * 100) / 100 != check.price) ? "*" : "" %>
         </span>
       </h3>
     </div>
