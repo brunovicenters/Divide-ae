@@ -1,0 +1,93 @@
+<form
+    action="/editCheck/<%= position %>?_method=PUT"
+    method="POST"
+    novalidate
+    class="validated-form w-100">
+    <!-- Modal -->
+    <div
+        class="modal fade"
+        id="editCheckForm"
+        tabindex="-1"
+        aria-labelledby="editCheckFormLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title h2" id="editCheckFormLabel">Add a check</h2>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <!-- Restaurant's name -->
+                    <div class="mb-3">
+                        <label for="restaurant" class="form-label">
+                            Restaurant's name:
+                        </label>
+                        <input
+                            type="text"
+                            name="check[restaurant]"
+                            id="restaurant"
+                            placeholder="Restaurant..."
+                            class="form-control"
+                            value="<%= check.restaurant %>"
+                            required />
+                        <div class="invalid-feedback">What restaurant was it?</div>
+                    </div>
+                    <!-- Tip -->
+                    <div class="mb-3">
+                        <label for="tip" class="form-label">
+                            Checks's Service Tip:
+                        </label>
+                        <div class="input-group">
+                            <input
+                                type="number"
+                                name="check[tip]"
+                                id="tip"
+                                min="0"
+                                step="0.01"
+                                placeholder="Tip percentage..."
+                                class="form-control"
+                                value="<%= check.tip * 100 %>"
+                                onchange="this.value = this.value.replace(/,/g, '.')"
+                                required />
+                            <span class="input-group-text">%</span>
+                            <div class="invalid-feedback">How much are you tipping?</div>
+                        </div>
+                    </div>
+                    <!-- Total Price -->
+                    <div class="mb-3">
+                        <label for="totalPrice" class="form-label">
+                            Checks's Total Price:
+                        </label>
+                        <input
+                            type="number"
+                            name="check[totalPrice]"
+                            id="totalPrice"
+                            min="0.01"
+                            step="0.01"
+                            placeholder="Total price..."
+                            class="form-control"
+                            value="<%= check.price %>"
+                            onchange="this.value = this.value.replace(/,/g, '.')"
+                            required />
+                        <div class="invalid-feedback">What's the total price?</div>
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button class="btn btn-success">Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
