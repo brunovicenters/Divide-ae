@@ -30,9 +30,7 @@
       class="btn btn-success flex-grow-1"
       data-bs-toggle="modal"
       data-bs-target="#addCheckForm">
-      <%= language == "en" ? "Add check" :
-      language == "pt" ? "Adicionar conta" :
-      "Developing" %>
+      Add check
     </button>
 
     <!-- Button Delete all -->
@@ -41,9 +39,7 @@
       class="btn btn-danger flex-grow-1"
       data-bs-toggle="modal"
       data-bs-target="#delAllCheckForm">
-      <%= language == "en" ? "Delete all" :
-      language == "pt" ? "Delete todas" :
-      "Developing" %>
+      Delete all
     </button>
 
     <!-- MODAL ADD CHECK -->
@@ -61,9 +57,7 @@
   <div class="mb-5 d-flex flex-column-reverse">
     <% if (checks.length == 0) { %>
     <div class="alert alert-danger" role="alert">
-      <%= language == "en" ? "You don't have any checks yet!" :
-      language == "pt" ? "Você ainda não possui contas!"
-      : "Developing" %>
+      You don't have any checks yet!
     </div>
 
     <% } else { let position = 0; checks.forEach(check => { %>
@@ -77,22 +71,13 @@
           <hr />
 
           <p class="card-text">
-            <%= language == "en" ? "Total price: "
-                : language == "pt" ? "Preço total: "
-                : "Developing" %>
-            <%= currency.format(check.price) %>
+            Total price: <%= currency.format(check.price) %>
           </p>
           <p class="card-text">
-            <%= language == "en" ? "Tip: "
-                : language == "pt" ? "Taxa: "
-                : "Developing" %>
-            <%= check.tip * 100 %>%
+            Tip: <%= check.tip * 100 %>%
           </p>
           <p class="card-text">
-            <%= language == "en" ? "Date: "
-                : language == "pt" ? "Data: "
-                : "Developing" %>
-            <%= check.date %>
+            Date: <%= check.date %>
           </p>
           <p class="card-text">
             <i class="bi bi-people fs-3"></i>

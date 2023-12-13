@@ -14,9 +14,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 class="modal-title h2" id="delAllCheckFormLabel">
-                        <%= language == "en" ? "Delete all checks"
-                            : language == "pt" ? "Deletar todas as contas"
-                            : "Developing" %>
+                        Delete all checks
                     </h2>
                     <button
                         type="button"
@@ -27,9 +25,7 @@
                 <% if(checks.length > 0) { %>
                     <div class="modal-body">
                         <p>
-                            <%= language == "en" ? "Are you sure you want to delete all checks?"
-                                : language == "pt" ? "Você tem certeza de que quer deletar todas as contas?"
-                                : "Developing" %>
+                            Are you sure you want to delete all checks?
                         </p>
                     </div>
                     <div class="modal-footer">
@@ -37,22 +33,16 @@
                             type="button"
                             class="btn btn-secondary"
                             data-bs-dismiss="modal">
-                            <%= language == "en" ? "Close"
-                                : language == "pt" ? "Fechar"
-                                : "Developing" %>
+                            Close
                         </button>
                         <button class="btn btn-danger">
-                            <%= language == "en" ? "Delete"
-                                : language == "pt" ? "Deletar"
-                                : "Developing" %>
+                            Delete
                         </button>
                     </div>
                 <% } else { %>
                     <div class="modal-body">
                         <p>
-                            <%= language == "en" ? "There are no checks to delete."
-                                : language == "pt" ? "Não há contas para deletar."
-                                : "Developing" %>
+                            There are no checks to delete.
                         </p>
                     </div>
                     <div class="modal-footer">
@@ -60,9 +50,7 @@
                             type="button"
                             class="btn btn-secondary"
                             data-bs-dismiss="modal">
-                            <%= language == "en" ? "Close"
-                                : language == "pt" ? "Fechar"
-                                : "Developing" %>
+                            Close
                         </button>
                     </div>
                 <% } %>
