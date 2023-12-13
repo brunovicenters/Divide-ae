@@ -25,6 +25,12 @@ store.set("checks", []);
 store.set("theme", "light");
 store.set("language", "en");
 
+const usdCurrency = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+  minimumFractionDigits: 2,
+});
+
 const brlCurrency = new Intl.NumberFormat("pt-BR", {
   style: "currency",
   currency: "BRL",
@@ -50,7 +56,7 @@ const getDate = () => {
 app.get("/", (req, res) => {
   res.render("check/home", {
     checks: store.get("checks"),
-    currency: brlCurrency,
+    currency: store.get("language") == "en" ? usdCurrency : brlCurrency,
     theme: store.get("theme"),
     language: store.get("language"),
   });
@@ -60,7 +66,7 @@ app.get("/check/:arrPos", (req, res) => {
   const check = store.get("checks")[req.params.arrPos];
   res.render("check/check", {
     check: check,
-    currency: brlCurrency,
+    currency: store.get("language") == "en" ? usdCurrency : brlCurrency,
     position: req.params.arrPos,
     theme: store.get("theme"),
     language: store.get("language"),
