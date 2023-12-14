@@ -5,23 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/askask11/multi-language@0.1.4/dist/multi-language.min.js" integrity="sha256-xL5PbSBwYLKYaUvdDP2S/lnF9s3oAPm/92GnACZBe2c=" crossorigin="anonymous"></script>
     <title>Testing</title>
   </head>
   <body>
-    <div class="form-check form-switch">
-      <input class="form-check-input switches" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="en" onchange="activeLang('en')">
-      <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-    </div>
-    <div class="form-check form-switch">
-      <input class="form-check-input switches" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="br" onchange="activeLang('br')">
-      <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
+    <script id="translation-sheet" type="application/json">
+      [
+        {
+          "id":"title",
+          "langs":
+          {
+            "en":"Title",
+            "br":"Título"
+          }
+        },
+        {
+          "id":"t1",
+          "langs":
+          {
+            "en":"Generic text",
+            "br":"Texto generico"
+          }
+        }
+      ]
+    </script>
+    
+    <div id="containerSwitch">
+      <div class="form-check form-switch">
+        <input class="form-check-input switches" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="en" onchange="activeLang('en')">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+      </div>
+      <div class="form-check form-switch">
+        <input class="form-check-input switches" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="br" onchange="activeLang('br')">
+        <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
+      </div>
     </div>
     <button id="add">Add</button>
     <div id="container"></div>
+
+    <select name="languages" id="languages">
+      <option value="en" id="optionEn">English</option>
+      <option value="br" id="optionBr">Português</option>
+    </select>
+
+    <div>
+      <h1 id="title">Title</h1>
+      <p id="t1">Generic text</p>
+    </div>
     <script src="testing.js"></script>
     <script>
       const activeLang = (lang) => {
         const switches = document.querySelectorAll('.form-check-input');
+        const select = document.getElementById('languages');
+        const options = select.options;
+
+        for(let i = 0; i < options.length; i++){
+          if(options[i].value == lang){
+            console.log(options[i].value)
+            options[i].selected = true;
+          } else {
+            options[i].selected = false;
+          }
+        }
+
         switches.forEach(checkbox => {
           // console.log(checkbox)
           if(checkbox.name == lang){
@@ -31,6 +77,16 @@
           }
         })
       }
+
+      // IT'S NOT CHANGING THE LANGUAGE
+
+      const translator = new MultiLanguage();
+
+      translator.registerSelect(document.getElementById('languages'));
+
+      const json = JSON.parse(document.getElementById('translation-sheet').innerHTML);
+
+      translator.addSheet(json);
     </script>
   </body>
 </html>
