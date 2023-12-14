@@ -43,7 +43,7 @@
     <button id="add">Add</button>
     <div id="container"></div>
 
-    <select name="languages" id="languages">
+    <select name="languages" id="languages" onchange="" style="display: none;">
       <option value="en" id="optionEn">English</option>
       <option value="br" id="optionBr">Português</option>
     </select>
@@ -58,11 +58,12 @@
         const switches = document.querySelectorAll('.form-check-input');
         const select = document.getElementById('languages');
         const options = select.options;
-
+        let event = new Event('change');
+        
         for(let i = 0; i < options.length; i++){
           if(options[i].value == lang){
-            console.log(options[i].value)
             options[i].selected = true;
+            select.dispatchEvent(event);
           } else {
             options[i].selected = false;
           }
@@ -77,8 +78,6 @@
           }
         })
       }
-
-      // IT'S NOT CHANGING THE LANGUAGE
 
       const translator = new MultiLanguage();
 
