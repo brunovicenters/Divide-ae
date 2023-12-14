@@ -1,8 +1,8 @@
-<form
+<!-- <form
     action="/changeLanguage"
     method="POST"
     novalidate
-    class="validated-form w-100">
+    class="validated-form w-100"> -->
     <!-- Modal -->
     <div
         class="modal fade"
@@ -58,6 +58,12 @@
                             disabled>
                         <label class="form-check-label" for="it">Italiano</label>
                     </div>
+
+                    <select name="languages" id="languages" style="display: none;">
+                        <option value="en" id="optionEn">English</option>
+                        <option value="pt" id="optionPt">Português</option>
+                        <option value="it" id="optionIt">Italiano</option>
+                    </select>
                 </div>
                 
                 <div class="modal-footer">
@@ -67,11 +73,11 @@
                         data-bs-dismiss="modal">
                         Close
                     </button>
-                    <button class="btn btn-primary">
+                    <!-- <button class="btn btn-primary">
                         Change
-                    </button>
+                    </button> -->
                 </div>
             </div>
         </div>
     </div>
-</form>
+<!-- </form> -->
