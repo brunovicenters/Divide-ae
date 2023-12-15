@@ -64,7 +64,6 @@ const activeLang = (lang) => {
           );
         }
       }
-      console.log("en");
       break;
     case "uk":
       if (totalPriceHome.length > 0) {
@@ -74,7 +73,6 @@ const activeLang = (lang) => {
           );
         }
       }
-      console.log("uk");
       break;
     case "pt":
       if (totalPriceHome.length > 0) {
@@ -84,7 +82,6 @@ const activeLang = (lang) => {
           );
         }
       }
-      console.log("pt");
       break;
     case "it":
       if (totalPriceHome.length > 0) {
@@ -94,7 +91,6 @@ const activeLang = (lang) => {
           );
         }
       }
-      console.log("it");
       break;
   }
 
