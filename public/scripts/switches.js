@@ -93,7 +93,9 @@ const activeLang = (lang) => {
       }
       break;
   }
+};
 
+const createMultiLanguage = () => {
   const translator = new MultiLanguage();
 
   translator.registerSelect(document.getElementById("languages"));
@@ -104,3 +106,5 @@ const activeLang = (lang) => {
 
   translator.addSheet(json);
 };
+
+createMultiLanguage();
