@@ -18,6 +18,22 @@
     <title>SplitCheck</title>
   </head>
   <body class="vh-100 d-flex flex-column">
+    <!-- JSON Translation -->
+    <script id="translation-sheet" type="application/json">
+      [
+        {
+          "id":"title",
+          "langs":
+          {
+            "en":"Split Check",
+            "uk":"Split Check",
+            "pt":"Div de Contas",
+            "it":"Developing"
+          }
+        }
+      ]
+    </script>
+
     <!-- Page -->
     <main class="container">
       <div class="row"><%- body %></div>
@@ -31,7 +47,10 @@
     <!-- Multi Language JS -->
     <script src="https://cdn.jsdelivr.net/gh/askask11/multi-language@0.1.4/dist/multi-language.min.js" integrity="sha256-xL5PbSBwYLKYaUvdDP2S/lnF9s3oAPm/92GnACZBe2c=" crossorigin="anonymous"></script>
 
-    <!-- Validate Form Js -->
+    <!-- Validate Form JS -->
     <script src="/scripts/validateForm.js"></script>
+
+    <!-- Idiom JS -->
+    <script src="/scripts/switches.js"></script>
   </body>
 </html>
