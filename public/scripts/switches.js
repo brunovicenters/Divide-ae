@@ -1,3 +1,4 @@
+// CURRENCIES
 const usdCurrency = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
@@ -22,12 +23,17 @@ const gbpCurrency = new Intl.NumberFormat("en-US", {
   minimumFractionDigits: 2,
 });
 
+// ACTIVE LANG
 const activeLang = (lang) => {
+  // SWITCHES & SELECT
   const switches = document.querySelectorAll(".switches");
   const select = document.getElementById("languages");
   const options = select.options;
   let event = new Event("change");
 
+  let language = lang;
+
+  // SET SELECT
   for (let i = 0; i < options.length; i++) {
     if (options[i].value == lang) {
       options[i].selected = true;
@@ -37,6 +43,7 @@ const activeLang = (lang) => {
     }
   }
 
+  // SET SWITCHES
   switches.forEach((checkbox) => {
     if (checkbox.id == lang) {
       checkbox.checked = true;
@@ -44,6 +51,52 @@ const activeLang = (lang) => {
       checkbox.checked = false;
     }
   });
+
+  const totalPriceHome = document.querySelectorAll(".totalPriceHome");
+
+  // SET CURRENCIES
+  switch (language) {
+    case "en":
+      if (totalPriceHome.length > 0) {
+        for (let i = 0; i < totalPriceHome.length; i++) {
+          totalPriceHome[i].innerHTML = usdCurrency.format(
+            totalPriceHome[i].innerHTML.replace(/\D/g, "") / 100
+          );
+        }
+      }
+      console.log("en");
+      break;
+    case "uk":
+      if (totalPriceHome.length > 0) {
+        for (let i = 0; i < totalPriceHome.length; i++) {
+          totalPriceHome[i].innerHTML = gbpCurrency.format(
+            totalPriceHome[i].innerHTML.replace(/\D/g, "") / 100
+          );
+        }
+      }
+      console.log("uk");
+      break;
+    case "pt":
+      if (totalPriceHome.length > 0) {
+        for (let i = 0; i < totalPriceHome.length; i++) {
+          totalPriceHome[i].innerHTML = brlCurrency.format(
+            totalPriceHome[i].innerHTML.replace(/\D/g, "") / 100
+          );
+        }
+      }
+      console.log("pt");
+      break;
+    case "it":
+      if (totalPriceHome.length > 0) {
+        for (let i = 0; i < totalPriceHome.length; i++) {
+          totalPriceHome[i].innerHTML = eurCurrency.format(
+            totalPriceHome[i].innerHTML.replace(/\D/g, "") / 100
+          );
+        }
+      }
+      console.log("it");
+      break;
+  }
 
   const translator = new MultiLanguage();
 
