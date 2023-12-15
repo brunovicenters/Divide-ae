@@ -33,8 +33,34 @@
                             name="language"
                             value="en"
                             onchange="activeLang('en')" <%= language == 'en' ? 'checked' : '' %>>
-                        <label class="form-check-label" for="en">English</label>
+                        <label class="form-check-label" for="en">English - US</label>
                     </div>
+
+                    <div class="form-check form-switch">
+                        <input
+                            class="form-check-input switches"
+                            type="checkbox"
+                            role="switch"
+                            id="uk"
+                            name="language"
+                            value="uk"
+                            onchange="activeLang('uk')" <%= language == 'uk' ? 'checked' : '' %>>
+                        <label class="form-check-label" for="uk">English - UK</label>
+                    </div>
+                    
+                    <div class="form-check form-switch">
+                        <input
+                            class="form-check-input switches"
+                            type="checkbox"
+                            role="switch"
+                            id="it"
+                            name="language"
+                            value="it"
+                            onchange="activeLang('it')" <%= language == 'it' ? 'checked' : '' %>
+                            >
+                        <label class="form-check-label" for="it">Italiano</label>
+                    </div>
+
                     <div class="form-check form-switch">
                         <input
                             class="form-check-input switches"
@@ -46,21 +72,10 @@
                             onchange="activeLang('pt')" <%= language == 'pt' ? 'checked' : '' %>>
                         <label class="form-check-label" for="pt">Português - Brasil</label>
                     </div>
-                    <div class="form-check form-switch">
-                        <input
-                            class="form-check-input switches"
-                            type="checkbox"
-                            role="switch"
-                            id="it"
-                            name="language"
-                            value="it"
-                            onchange="activeLang('it')" <%= language == 'it' ? 'checked' : '' %>
-                            disabled>
-                        <label class="form-check-label" for="it">Italiano</label>
-                    </div>
 
                     <select name="languages" id="languages" style="display: none;">
-                        <option value="en" id="optionEn">English</option>
+                        <option value="en" id="optionEn">English-US</option>
+                        <option value="uk" id="optionUk">English-UK</option>
                         <option value="pt" id="optionPt">Português</option>
                         <option value="it" id="optionIt">Italiano</option>
                     </select>
