@@ -25,6 +25,7 @@ store.set("checks", []);
 store.set("theme", "light");
 store.set("language", "en");
 
+// DELETE LATER
 const usdCurrency = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
@@ -40,6 +41,12 @@ const brlCurrency = new Intl.NumberFormat("pt-BR", {
 const eurCurrency = new Intl.NumberFormat("en-DE", {
   style: "currency",
   currency: "EUR",
+  minimumFractionDigits: 2,
+});
+
+const gbpCurrency = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "GBP",
   minimumFractionDigits: 2,
 });
 
@@ -233,10 +240,10 @@ app.get("/deleteOrder/:arrPos/:personPos/:orderPos", (req, res) => {
   res.redirect("/check/" + (checks.length - 1));
 });
 
-app.post("/changeLanguage", (req, res) => {
-  store.set("language", req.body.language);
-  res.redirect("/");
-});
+// app.post("/changeLanguage", (req, res) => {
+//   store.set("language", req.body.language);
+//   res.redirect("/");
+// });
 
 app.delete("/deleteAll", (req, res) => {
   store.set("checks", []);
