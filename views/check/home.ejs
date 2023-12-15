@@ -7,6 +7,7 @@
       "langs":
       {
         "en":"Split Check",
+        "uk":"Split Check",
         "pt":"Div de Contas",
         "it":"Developing"
       }
@@ -86,7 +87,7 @@
           <hr />
 
           <p class="card-text">
-            Total price: <%= currency.format(check.price) %>
+            Total price: <span class="totalPriceHome"><%= currency.format(check.price) %></span>
           </p>
           <p class="card-text">
             Tip: <%= check.tip * 100 %>%
