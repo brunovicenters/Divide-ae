@@ -74,6 +74,8 @@ app.get("/", (req, res) => {
         ? usdCurrency
         : store.get("language") == "pt"
         ? brlCurrency
+        : store.get("language") == "uk"
+        ? gbpCurrency
         : eurCurrency,
     theme: store.get("theme"),
     language: store.get("language"),
@@ -81,6 +83,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/check/:arrPos", (req, res) => {
+  req.query.idiom ? store.set("language", req.query.idiom) : null;
   const check = store.get("checks")[req.params.arrPos];
   res.render("check/check", {
     check: check,
@@ -89,6 +92,8 @@ app.get("/check/:arrPos", (req, res) => {
         ? usdCurrency
         : store.get("language") == "pt"
         ? brlCurrency
+        : store.get("language") == "uk"
+        ? gbpCurrency
         : eurCurrency,
     position: req.params.arrPos,
     theme: store.get("theme"),
