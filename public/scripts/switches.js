@@ -23,21 +23,23 @@ const gbpCurrency = new Intl.NumberFormat("en-US", {
   minimumFractionDigits: 2,
 });
 
+const idiom = document.querySelector("#idiom");
+
 // ACTIVE LANG
 const activeLang = (lang) => {
   // SWITCHES & SELECT
   const switches = document.querySelectorAll(".switches");
   const select = document.getElementById("languages");
   const options = select.options;
+  const idiom = document.querySelector("#idiom");
   let event = new Event("change");
-
-  let language = lang;
 
   // SET SELECT
   for (let i = 0; i < options.length; i++) {
     if (options[i].value == lang) {
       options[i].selected = true;
       select.dispatchEvent(event);
+      idiom.innerHTML = lang;
     } else {
       options[i].selected = false;
     }
@@ -55,7 +57,7 @@ const activeLang = (lang) => {
   const totalPriceHome = document.querySelectorAll(".totalPriceHome");
 
   // SET CURRENCIES
-  switch (language) {
+  switch (lang) {
     case "en":
       if (totalPriceHome.length > 0) {
         for (let i = 0; i < totalPriceHome.length; i++) {
@@ -93,10 +95,15 @@ const activeLang = (lang) => {
       }
       break;
   }
+
+  const cardsChecks = document.querySelectorAll(".cardsChecks");
+  for (let i = 0; i < cardsChecks.length; i++) {
+    cardsChecks[i].href = cardsChecks[i].href + "/?idiom=" + lang;
+  }
 };
 
-const createMultiLanguage = () => {
-  const translator = new MultiLanguage();
+const createMultiLanguage = (language) => {
+  const translator = new MultiLanguage(language);
 
   translator.registerSelect(document.getElementById("languages"));
 
@@ -107,4 +114,4 @@ const createMultiLanguage = () => {
   translator.addSheet(json);
 };
 
-createMultiLanguage();
+createMultiLanguage(idiom.innerHTML);
