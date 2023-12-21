@@ -28,7 +28,7 @@
   <div class="d-flex flex-wrap mb-1 gap-1">
     <!-- Button trigger modal -->
     <button
-      id="addCheckForm"
+      id="addCheckFormBtn"
       type="button"
       class="btn btn-success flex-grow-1"
       data-bs-toggle="modal"
@@ -38,7 +38,7 @@
 
     <!-- Button Delete all -->
     <button
-      id="delAllCheckForm"
+      id="delAllCheckFormBtn"
       type="submit"
       class="btn btn-danger flex-grow-1"
       data-bs-toggle="modal"
@@ -60,7 +60,7 @@
   <!-- Checks' Cards -->
   <div class="mb-5 d-flex flex-column-reverse">
     <% if (checks.length == 0) { %>
-    <div class="alert alert-danger" role="alert">
+    <div id="alertChecks" class="alert alert-danger" role="alert">
       You don't have any checks yet!
     </div>
 
@@ -75,13 +75,13 @@
           <hr />
 
           <p class="card-text">
-            Total price: <span class="totalPriceHome"><%= currency.format(check.price) %></span>
+            <span id="totalPriceText" class="fw-semibold">Total price</span>: <span class="totalPriceHome"><%= currency.format(check.price) %></span>
           </p>
           <p class="card-text">
-            Tip: <%= check.tip * 100 %>%
+            <span id="tipHome" class="fw-semibold">Tip</span>: <%= check.tip * 100 %>%
           </p>
           <p class="card-text">
-            Date: <%= check.date %>
+            <span id="dateHome" class="fw-semibold">Date</span>: <%= check.date %>
           </p>
           <p class="card-text">
             <i class="bi bi-people fs-3"></i>
