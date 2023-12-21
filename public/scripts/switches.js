@@ -137,8 +137,8 @@ const createMultiLanguage = (language) => {
   );
 
   translator.addSheet(json);
+
+  activeLang(language);
 };
 
 createMultiLanguage(idiom.innerHTML);
-
-activeLang(idiom.innerHTML);
