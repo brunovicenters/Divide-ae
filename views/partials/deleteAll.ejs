@@ -24,29 +24,31 @@
                 </div>
                 <% if(checks.length > 0) { %>
                     <div class="modal-body">
-                        <p>
+                        <p id="delAllText">
                             Are you sure you want to delete all checks?
                         </p>
                     </div>
                     <div class="modal-footer">
                         <button
+                            id="closeDelAllBtn"
                             type="button"
                             class="btn btn-secondary"
                             data-bs-dismiss="modal">
                             Close
                         </button>
-                        <button class="btn btn-danger">
+                        <button id="delAllBtn" class="btn btn-danger">
                             Delete
                         </button>
                     </div>
                 <% } else { %>
                     <div class="modal-body">
-                        <p>
+                        <p id="noChecksText">
                             There are no checks to delete.
                         </p>
                     </div>
                     <div class="modal-footer">
                         <button
+                            id="closeDelAllBtn"
                             type="button"
                             class="btn btn-secondary"
                             data-bs-dismiss="modal">
