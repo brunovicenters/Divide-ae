@@ -32,6 +32,7 @@ const activeLang = (lang) => {
   const select = document.getElementById("languages");
   const options = select.options;
   const idiom = document.querySelector("#idiom");
+  const idiomAddCheck = document.querySelector("#idiomAddCheck");
   let event = new Event("change");
 
   // SET SELECT
@@ -40,6 +41,7 @@ const activeLang = (lang) => {
       options[i].selected = true;
       select.dispatchEvent(event);
       idiom.innerHTML = lang;
+      idiomAddCheck.value = lang;
     } else {
       options[i].selected = false;
     }
@@ -55,6 +57,9 @@ const activeLang = (lang) => {
   });
 
   const totalPriceHome = document.querySelectorAll(".totalPriceHome");
+  const totalPriceText = document.querySelectorAll(".totalPriceText");
+  const tipHome = document.querySelectorAll(".tipHome");
+  const dateHome = document.querySelectorAll(".dateHome");
 
   // SET CURRENCIES
   switch (lang) {
@@ -66,6 +71,15 @@ const activeLang = (lang) => {
           );
         }
       }
+      for (let i = 0; i < totalPriceText.length; i++) {
+        totalPriceText[i].textContent = "Total price";
+      }
+      for (let i = 0; i < tipHome.length; i++) {
+        tipHome[i].textContent = "Tip";
+      }
+      for (let i = 0; i < dateHome.length; i++) {
+        dateHome[i].textContent = "Date";
+      }
       break;
     case "uk":
       if (totalPriceHome.length > 0) {
@@ -74,6 +88,15 @@ const activeLang = (lang) => {
             totalPriceHome[i].innerHTML.replace(/\D/g, "") / 100
           );
         }
+      }
+      for (let i = 0; i < totalPriceText.length; i++) {
+        totalPriceText[i].textContent = "Total price";
+      }
+      for (let i = 0; i < tipHome.length; i++) {
+        tipHome[i].textContent = "Tip";
+      }
+      for (let i = 0; i < dateHome.length; i++) {
+        dateHome[i].textContent = "Date";
       }
       break;
     case "pt":
@@ -84,20 +107,22 @@ const activeLang = (lang) => {
           );
         }
       }
-      break;
-    case "it":
-      if (totalPriceHome.length > 0) {
-        for (let i = 0; i < totalPriceHome.length; i++) {
-          totalPriceHome[i].innerHTML = eurCurrency.format(
-            totalPriceHome[i].innerHTML.replace(/\D/g, "") / 100
-          );
-        }
+      for (let i = 0; i < totalPriceText.length; i++) {
+        totalPriceText[i].textContent = "Preço total";
+      }
+      for (let i = 0; i < tipHome.length; i++) {
+        tipHome[i].textContent = "Gorjeta";
+      }
+      for (let i = 0; i < dateHome.length; i++) {
+        dateHome[i].textContent = "Data";
       }
       break;
   }
 
   const cardsChecks = document.querySelectorAll(".cardsChecks");
   for (let i = 0; i < cardsChecks.length; i++) {
+    let url = cardsChecks[i].href;
+    cardsChecks[i].href = url.split("?")[0];
     cardsChecks[i].href = cardsChecks[i].href + "/?idiom=" + lang;
   }
 };
@@ -115,3 +140,5 @@ const createMultiLanguage = (language) => {
 };
 
 createMultiLanguage(idiom.innerHTML);
+
+activeLang(idiom.innerHTML);
