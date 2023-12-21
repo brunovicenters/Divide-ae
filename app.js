@@ -102,6 +102,7 @@ app.get("/check/:arrPos", (req, res) => {
 });
 
 app.post("/addCheck", (req, res) => {
+  req.body.language ? store.set("language", req.body.language) : null;
   const checks = store.get("checks");
   const check = req.body.check;
   try {
