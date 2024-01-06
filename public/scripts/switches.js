@@ -122,7 +122,7 @@ const activeLang = (lang) => {
   const cardsChecks = document.querySelectorAll(".cardsChecks");
   for (let i = 0; i < cardsChecks.length; i++) {
     let url = cardsChecks[i].href;
-    cardsChecks[i].href = url.split("?")[0];
+    cardsChecks[i].href = url.split("/?")[0];
     cardsChecks[i].href = cardsChecks[i].href + "/?idiom=" + lang;
   }
 };
