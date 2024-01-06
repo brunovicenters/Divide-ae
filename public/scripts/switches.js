@@ -73,11 +73,7 @@ const activeLang = (lang) => {
       }
       for (let i = 0; i < totalPriceText.length; i++) {
         totalPriceText[i].textContent = "Total price";
-      }
-      for (let i = 0; i < tipHome.length; i++) {
         tipHome[i].textContent = "Tip";
-      }
-      for (let i = 0; i < dateHome.length; i++) {
         dateHome[i].textContent = "Date";
       }
       break;
@@ -91,11 +87,7 @@ const activeLang = (lang) => {
       }
       for (let i = 0; i < totalPriceText.length; i++) {
         totalPriceText[i].textContent = "Total price";
-      }
-      for (let i = 0; i < tipHome.length; i++) {
         tipHome[i].textContent = "Tip";
-      }
-      for (let i = 0; i < dateHome.length; i++) {
         dateHome[i].textContent = "Date";
       }
       break;
@@ -109,11 +101,7 @@ const activeLang = (lang) => {
       }
       for (let i = 0; i < totalPriceText.length; i++) {
         totalPriceText[i].textContent = "Preço total";
-      }
-      for (let i = 0; i < tipHome.length; i++) {
         tipHome[i].textContent = "Gorjeta";
-      }
-      for (let i = 0; i < dateHome.length; i++) {
         dateHome[i].textContent = "Data";
       }
       break;
