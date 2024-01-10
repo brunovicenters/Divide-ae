@@ -82,6 +82,16 @@ app.get("/", (req, res) => {
   });
 });
 
+// SEED DATA
+let devTest = new Check(
+  "Testing",
+  125.99,
+  getDate(),
+  new Person("Bruno", new Order("pão de queijo", "4", "25.99")),
+  0
+);
+store.set("checks", [devTest]);
+
 app.get("/check/:arrPos", (req, res) => {
   req.query.idiom ? store.set("language", req.query.idiom) : null;
   const check = store.get("checks")[req.params.arrPos];
