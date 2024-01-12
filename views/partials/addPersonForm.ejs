@@ -22,73 +22,74 @@
                 </div>
                 
                 <div class="modal-body">
-                    <h5>People</h5>
+                    <h5 id="addPersonCheckText">Person</h5>
                     <!-- Person's Name -->
                     <div class="mb-3">
-                        <label for="person" class="form-label">First person:</label>
+                        <label id="addPersonCheck" for="person" class="form-label">Person's name:</label>
                         <input
                             type="text"
                             name="person[name]"
-                            id="person"
+                            id="personAddForm"
                             placeholder="Person's name..."
                             class="form-control"
                             required />
-                        <div class="invalid-feedback">What is your name?</div>
+                        <div id="addPersonCheckError" class="invalid-feedback">What is the person's name?</div>
                     </div>
 
                     <hr />
 
-                    <h5>Order</h5>
+                    <h5 id="addOrderCheckText">Order</h5>
                     <!-- Order -->
                     <div class="mb-3">
-                        <label for="dish" class="form-label">First dish:</label>
+                        <label id="addOrderCheck" for="dish" class="form-label">Dish's name:</label>
                         <input
                             type="text"
                             name="person[dish]"
-                            id="dish"
+                            id="dishAddForm"
                             placeholder="Dish's name..."
                             class="form-control"
                             required />
-                        <div class="invalid-feedback">What did you eat?</div>
+                        <div id="addOrderCheckError" class="invalid-feedback">What did you eat?</div>
                     </div>
                     <div class="mb-3">
-                        <label for="qty" class="form-label">Quantity:</label>
+                        <label id="addQtyCheck" for="qtyAddForm" class="form-label">Quantity:</label>
                         <input
                             type="number"
                             name="person[qty]"
-                            id="qty"
+                            id="qtyAddForm"
                             min="1"
                             step="1"
                             placeholder="Quantity..."
                             class="form-control"
                             value="1"
                             required />
-                        <div class="invalid-feedback">How many did you order?</div>
+                        <div id="addQtyCheckError" class="invalid-feedback">How many did you order?</div>
                     </div>
                     <div class="mb-3">
-                        <label for="price" class="form-label">Price per dish:</label>
+                        <label id="addPriceCheck" for="priceAddForm" class="form-label">Price per dish:</label>
                         <input
                             type="number"
                             name="person[price]"
-                            id="price"
+                            id="priceAddForm"
                             min="0.01"
                             step="0.01"
                             placeholder="Price per dish..."
                             class="form-control"
                             onchange="this.value = this.value.replace(/,/g, '.')"
                             required />
-                        <div class="invalid-feedback">How much did it cost per dish?</div>
+                        <div id="addPriceCheckError" class="invalid-feedback">How much did it cost per dish?</div>
                     </div>
                 </div>
 
                 <div class="modal-footer">
                     <button
+                        id="closeAddPersonBtn"
                         type="button"
                         class="btn btn-secondary"
                         data-bs-dismiss="modal">
                         Close
                     </button>
-                    <button class="btn btn-success">Add</button>
+                    <button id="addPersonBtn" class="btn btn-success">Add</button>
                 </div>
             </div>
         </div>
