@@ -88,14 +88,14 @@
               <div class="modal-body">
                   <!-- Person's name -->
                   <div class="mb-3">
-                      <label for="person" class="form-label">
+                      <label for="personCheck1" class="form-label">
                           Person's name:
                       </label>
                       <input
                           type="text"
                           name="person[name]"
-                          id="person"
-                          placeholder="Person's name..."
+                          id="personCheck1"
+                          placeholder="Person'id="qty"s name..."
                           class="form-control"
                           value="<%= person.name %>"
                           required />
@@ -107,11 +107,11 @@
                   <div>
                       <h5>Dish 1:</h5>
                       <div class="mb-3">
-                          <label for="food" class="form-label">Food:</label>
+                          <label for="foodCheck1" class="form-label">Food:</label>
                           <input
                           type="text"
                           name="dish[food]"
-                          id="food"
+                          id="foodCheck1"
                           placeholder="Food's name..."
                           class="form-control"
                           value="<%= person.orders[0].food %>"
@@ -119,11 +119,11 @@
                           <div class="invalid-feedback">What did you eat?</div>
                       </div>
                       <div class="mb-3">
-                          <label for="qty" class="form-label">Quantity:</label>
+                          <label for="qtyCheck1" class="form-label">Quantity:</label>
                           <input
                               type="number"
                               name="dish[qty]"
-                              id="qty"
+                              id="qtyCheck1"
                               min="1"
                               step="1"
                               placeholder="Quantity..."
@@ -133,11 +133,11 @@
                           <div class="invalid-feedback">How many did you order?</div>
                       </div>
                       <div class="mb-3">
-                          <label for="price" class="form-label">Price per dish:</label>
+                          <label for="priceCheck1" class="form-label">Price per dish:</label>
                           <input
                               type="number"
                               name="dish[price]"
-                              id="price"
+                              id="priceCheck1"
                               min="0.01"
                               step="0.01"
                               placeholder="Price per food..."
@@ -162,11 +162,11 @@
                                   </a>
                               </div>
                               <div class="mb-3">
-                                  <label for="food" class="form-label">Food:</label>
+                                  <label for="foodCheck<%= i %>" class="form-label">Food:</label>
                                   <input
                                       type="text"
                                       name="dish[food]"
-                                      id="food"
+                                      id="foodCheck<%= i %>"
                                       placeholder="Food's name..."
                                       class="form-control"
                                       value="<%= person.orders[i].food %>"
@@ -174,11 +174,11 @@
                                   <div class="invalid-feedback">What did you eat?</div>
                               </div>
                               <div class="mb-3">
-                                  <label for="qty" class="form-label">Quantity:</label>
+                                  <label for="qtyCheck<%= i %>" class="form-label">Quantity:</label>
                                   <input
                                       type="number"
                                       name="dish[qty]"
-                                      id="qty"
+                                      id="qtyCheck<%= i %>"
                                       min="1"
                                       step="1"
                                       placeholder="Quantity..."
@@ -188,11 +188,11 @@
                                   <div class="invalid-feedback">How many did you order?</div>
                               </div>
                               <div class="mb-3">
-                                  <label for="price" class="form-label">Price per dish:</label>
+                                  <label for="priceCheck<%= i %>" class="form-label">Price per dish:</label>
                                   <input
                                       type="text"
                                       name="dish[price]"
-                                      id="price"
+                                      id="priceCheck<%= i %>"
                                       min="0.01"
                                       step="0.01"
                                       placeholder="Price per food..."
