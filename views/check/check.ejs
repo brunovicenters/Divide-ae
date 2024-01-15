@@ -77,7 +77,7 @@
           <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
               <div class="modal-header">
-                  <h2 class="modal-title h2" id="editPersonFormLabel<%= personPos %>">Add a check</h2>
+                  <h2 class="modal-title h2" id="editPersonFormLabel<%= personPos %>"><%= (language == "pt" ? "Editar" : "Edit") %> <%= person.name %></h2>
                   <button
                   type="button"
                   class="btn-close"
@@ -88,65 +88,65 @@
               <div class="modal-body">
                   <!-- Person's name -->
                   <div class="mb-3">
-                      <label for="personCheck1" class="form-label">
-                          Person's name:
+                      <label for="personCheck1<%= personPos %>" class="form-label">
+                        <%= (language == "pt" ? "Nome da pessoa" : "Person's name") %>:
                       </label>
                       <input
                           type="text"
                           name="person[name]"
-                          id="personCheck1"
-                          placeholder="Person'id="qty"s name..."
+                          id="personCheck1<%= personPos %>"
+                          placeholder="<%= (language == "pt" ? "Nome da pessoa" : "Person's name") %>..."
                           class="form-control"
                           value="<%= person.name %>"
                           required />
-                      <div class="invalid-feedback">Who is it?</div>
+                      <div class="invalid-feedback"><%= (language == "pt" ? "Quem é" : "Who is it") %>?</div>
                   </div>
 
                   <hr />
 
                   <div>
-                      <h5>Dish 1:</h5>
+                      <h5> <%= (language == "pt" ? "Prato" : "Dish")  %> 1:</h5>
                       <div class="mb-3">
-                          <label for="foodCheck1" class="form-label">Food:</label>
+                          <label for="foodCheck1<%= personPos %>" class="form-label"><%= (language == "pt" ? "Comida" : "Food")  %>:</label>
                           <input
                           type="text"
                           name="dish[food]"
-                          id="foodCheck1"
-                          placeholder="Food's name..."
+                          id="foodCheck1<%= personPos %>"
+                          placeholder="<%= (language == "pt" ? "Nome da comida" : "Food's name")  %>..."
                           class="form-control"
                           value="<%= person.orders[0].food %>"
                           required />
-                          <div class="invalid-feedback">What did you eat?</div>
+                          <div class="invalid-feedback"><%= (language == "pt" ? "O que você comeu" : "What did you eat")  %>?</div>
                       </div>
                       <div class="mb-3">
-                          <label for="qtyCheck1" class="form-label">Quantity:</label>
+                          <label for="qtyCheck1<%= personPos %>" class="form-label"><%= (language == "pt" ? "Quantidade" : "Quantity")  %>:</label>
                           <input
                               type="number"
                               name="dish[qty]"
-                              id="qtyCheck1"
+                              id="qtyCheck1<%= personPos %>"
                               min="1"
                               step="1"
-                              placeholder="Quantity..."
+                              placeholder="<%= (language == "pt" ? "Quantidade" : "Quantity")  %>..."
                               class="form-control"
                               value="<%= person.orders[0].quantity %>"
                               required />
-                          <div class="invalid-feedback">How many did you order?</div>
+                          <div class="invalid-feedback"><%= (language == "pt" ? "Quantos você pediu" : "How many did you order")  %>?</div>
                       </div>
                       <div class="mb-3">
-                          <label for="priceCheck1" class="form-label">Price per dish:</label>
+                          <label for="priceCheck1<%= personPos %>" class="form-label"><%= (language == "pt" ? "Preço por prato" : "Price per dish")  %>:</label>
                           <input
                               type="number"
                               name="dish[price]"
-                              id="priceCheck1"
+                              id="priceCheck1<%= personPos %>"
                               min="0.01"
                               step="0.01"
-                              placeholder="Price per food..."
+                              placeholder="<%= (language == "pt" ? "Preço por prato" : "Price per dish")  %>..."
                               class="form-control"
                               value="<%= person.orders[0].price %>"
                               onchange="this.value = this.value.replace(/,/g, '.')"
                               required />
                           <div class="invalid-feedback">
-                              How much did it cost per dish?
+                              <%= (language == "pt" ? "Quanto custou por prato" : "How much did it cost per dish")  %>?
                           </div>
                       </div>
                   </div>
@@ -156,51 +156,51 @@
                           <hr />
                           <div>
                               <div class="d-flex justify-content-between h5">
-                                  <span>Dish <%= i + 1 %>:</span>
+                                  <span><%= (language == "pt" ? "Prato" : "Dish")  %> <%= i + 1 %>:</span>
                                   <a href="/deleteOrder/<%= position %>/<%= personPos %>/<%= i %>" class="btn btn-outline-danger">
                                       <i class="bi bi-trash fs-3"></i>
                                   </a>
                               </div>
                               <div class="mb-3">
-                                  <label for="foodCheck<%= i %>" class="form-label">Food:</label>
+                                  <label for="foodCheck<%= personPos %><%= i %>" class="form-label"><%= (language == "pt" ? "Comida" : "Food")  %>:</label>
                                   <input
                                       type="text"
                                       name="dish[food]"
-                                      id="foodCheck<%= i %>"
-                                      placeholder="Food's name..."
+                                      id="foodCheck<%= personPos %><%= i %>"
+                                      placeholder="<%= (language == "pt" ? "Nome da comida" : "Food's name")  %>..."
                                       class="form-control"
                                       value="<%= person.orders[i].food %>"
                                       required />
-                                  <div class="invalid-feedback">What did you eat?</div>
+                                  <div class="invalid-feedback"><%= (language == "pt" ? "O que você comeu" : "What did you eat")  %>?</div>
                               </div>
                               <div class="mb-3">
-                                  <label for="qtyCheck<%= i %>" class="form-label">Quantity:</label>
+                                  <label for="qtyCheck<%= personPos %><%= i %>" class="form-label"><%= (language == "pt" ? "Quantidade" : "Quantity")  %>:</label>
                                   <input
                                       type="number"
                                       name="dish[qty]"
-                                      id="qtyCheck<%= i %>"
+                                      id="qtyCheck<%= personPos %><%= i %>"
                                       min="1"
                                       step="1"
-                                      placeholder="Quantity..."
+                                      placeholder="<%= (language == "pt" ? "Quantidade" : "Quantity")  %>..."
                                       class="form-control"
                                       value="<%= person.orders[i].quantity %>"
                                       required />
-                                  <div class="invalid-feedback">How many did you order?</div>
+                                  <div class="invalid-feedback"><%= (language == "pt" ? "Quantos você pediu" : "How many did you order")  %>?</div>
                               </div>
                               <div class="mb-3">
-                                  <label for="priceCheck<%= i %>" class="form-label">Price per dish:</label>
+                                  <label for="priceCheck<%= personPos %><%= i %>" class="form-label"><%= (language == "pt" ? "Preço por prato" : "Price per dish")  %></label>
                                   <input
                                       type="text"
                                       name="dish[price]"
-                                      id="priceCheck<%= i %>"
+                                      id="priceCheck<%= personPos %><%= i %>"
                                       min="0.01"
                                       step="0.01"
-                                      placeholder="Price per food..."
+                                      placeholder="<%= (language == "pt" ? "Preço por prato" : "Price per dish")  %>..."
                                       class="form-control"
                                       value="<%= person.orders[i].price %>"
                                       required />
                                   <div class="invalid-feedback">
-                                      How much did it cost per dish?
+                                    <%= (language == "pt" ? "Quanto custou por prato" : "How much did it cost per dish")  %>?
                                   </div>
                               </div>
                           </div>
@@ -213,9 +213,9 @@
                       type="button"
                       class="btn btn-secondary"
                       data-bs-dismiss="modal">
-                      Close
+                      <%= (language == "pt" ? "Fechar" : "Close")  %>
                   </button>
-                  <button class="btn btn-success">Edit</button>
+                  <button class="btn btn-success"><%= (language == "pt" ? "Editar" : "Edit")  %></button>
               </div>
             </div>
           </div>
@@ -250,7 +250,7 @@
                 <div class="modal-content">
                   <% if (check.people.length > 1) { %>
                     <div class="modal-header">
-                      <h2 class="modal-title h2" id="delPersonFormLabel<%= personPos %>">Delete <%= person.name %>?</h2>
+                      <h2 class="modal-title h2" id="delPersonFormLabel<%= personPos %>"><%= (language == "pt" ? "Deletar" : "Delete")  %> <%= person.name %>?</h2>
                       <button
                         type="button"
                         class="btn-close"
@@ -259,20 +259,24 @@
                     </div>
 
                     <div class="modal-body">
-                      <p>Are you sure you want do delete <%= person.name %> from your check?</p>
+                      <p>
+                        <%= (language == "pt" ? "Você tem certeza de que quer deletar" : "Are you sure you want do delete") %>
+                        <%= person.name %>
+                        <%= (language == "pt" ? "de sua conta" : "from your check")  %>?
+                      </p>
                     </div>
                     <div class="modal-footer">
                       <button
                         type="button"
                         class="btn btn-secondary"
                         data-bs-dismiss="modal">
-                        Close
+                        <%= (language == "pt" ? "Fechar" : "Close")  %>
                       </button>
-                      <button class="btn btn-danger">Delete</button>
+                      <button class="btn btn-danger"><%= (language == "pt" ? "Deletar" : "Delete")  %></button>
                     </div>
                   <% } else {%>
                     <div class="modal-header">
-                      <h2 class="modal-title h2" id="delPersonFormLabel">Can't delete!</h2>
+                      <h2 class="modal-title h2" id="delPersonFormLabel"><%= (language == "pt" ? "Incapaz de deletar!" : "Can't delete!")  %></h2>
                       <button
                         type="button"
                         class="btn-close"
@@ -281,14 +285,16 @@
                     </div>
 
                     <div class="modal-body">
-                      <p>You can't leave your check without a person.</p>
+                      <p>
+                        <%= (language == "pt" ? "Você não pode deixar sua conta sem uma pessoa." : "You can't leave your check without a person.")  %>
+                      </p>
                     </div>
                     <div class="modal-footer">
                       <button
                         type="button"
                         class="btn btn-secondary"
                         data-bs-dismiss="modal">
-                        Close
+                        <%= (language == "pt" ? "Fechar" : "Close")  %>
                       </button>
                     </div>
                   <% } %>
@@ -321,7 +327,7 @@
               <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                      <h2 class="modal-title h2" id="addOrderFormLabel<%= personPos %>">Add order</h2>
+                      <h2 class="modal-title h2" id="addOrderFormLabel<%= personPos %>"><%= (language == "pt" ? "Adicionar pedido" : "Add order")  %></h2>
                       <button
                         type="button"
                         class="btn-close"
@@ -331,44 +337,48 @@
 
                     <div class="modal-body">
                       <div class="mb-3">
-                        <label for="food" class="form-label">Food:</label>
+                        <label for="food<%= personPos %>" class="form-label"><%= (language == "pt" ? "Comida" : "Food")  %>:</label>
                         <input
                           type="text"
                           name="order[food]"
-                          id="food"
-                          placeholder="Food's name..."
+                          id="food<%= personPos %>"
+                          placeholder="<%= (language == "pt" ? "Nome da comida" : "Food's name")  %>..."
                           class="form-control"
                           required />
-                        <div class="invalid-feedback">What did you eat?</div>
+                        <div class="invalid-feedback">
+                          <%= (language == "pt") ? "O que você comeu" : "What did you eat" %>?
+                        </div>
                       </div>
                       <div class="mb-3">
-                        <label for="qty" class="form-label">Quantity:</label>
+                        <label for="qty<%= personPos %>" class="form-label"><%= (language == "pt" ? "Quantidade" : "Quantity")  %>:</label>
                         <input
                           type="number"
                           name="order[qty]"
-                          id="qty"
+                          id="qty<%= personPos %>"
                           min="1"
                           step="1"
-                          placeholder="Quantity..."
+                          placeholder="<%= (language == "pt" ? "Quantidade" : "Quantity")  %>..."
                           class="form-control"
                           value="1"
                           required />
-                        <div class="invalid-feedback">How many did you order?</div>
+                        <div class="invalid-feedback">
+                          <%= (language == "pt" ? "Quantos você pediu" : "How many did you order")  %>?
+                        </div>
                       </div>
                       <div class="mb-3">
-                        <label for="price" class="form-label">Price per dish:</label>
+                        <label for="price<%= personPos %>" class="form-label"><%= (language == "pt" ? "Preço por prato" : "Price per dish")  %>:</label>
                         <input
                           type="number"
                           name="order[price]"
-                          id="price"
+                          id="price<%= personPos %>"
                           min="0.01"
                           step="0.01"
-                          placeholder="Price per food..."
+                          placeholder="<%= (language == "pt" ? "Preço por prato" : "Price per dish")  %>..."
                           class="form-control"
                           onchange="this.value = this.value.replace(/,/g, '.')"
                           required />
                         <div class="invalid-feedback">
-                          How much did it cost per dish?
+                          <%= (language == "pt" ? "Quanto custou por prato?" : "How much did it cost per dish?")  %>
                         </div>
                       </div>
                     </div>
@@ -377,9 +387,9 @@
                         type="button"
                         class="btn btn-secondary"
                         data-bs-dismiss="modal">
-                        Close
+                        <%= (language == "pt" ? "Fechar" : "Close")  %>
                       </button>
-                      <button class="btn btn-success">Add</button>
+                      <button class="btn btn-success"><%= (language == "pt" ? "Adicionar" : "Add")  %></button>
                     </div>
                 </div>
               </div>
