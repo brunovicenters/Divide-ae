@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/assets/style.css" />
     <title>SplitCheck</title>
   </head>
-  <body class="vh-100 d-flex flex-column">
+  <body class="vh-100 d-flex flex-column position-relative">
     <!-- JSON Translation -->
     <script id="translation-sheet" type="application/json">
       [
@@ -747,6 +747,9 @@
     <main class="container">
       <div class="row"><%- body %></div>
     </main>
+
+    <%- include("../partials/footer") %>
+
     <!-- Bootstrap JS -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
