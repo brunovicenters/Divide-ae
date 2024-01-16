@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(methodOverride("_method"));
 
 store.set("checks", []);
-store.set("theme", "light");
+store.set("theme", "dark");
 store.set("language", "en");
 
 // DELETE LATER
