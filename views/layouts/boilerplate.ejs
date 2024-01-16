@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/assets/style.css" />
     <title>SplitCheck</title>
   </head>
-  <body class="vh-100 d-flex flex-column position-relative">
+  <body class="vh-100 d-flex flex-column position-relative <%= (theme === "dark") ? "bg-dark text-light" : "" %>">
     <!-- JSON Translation -->
     <script id="translation-sheet" type="application/json">
       [

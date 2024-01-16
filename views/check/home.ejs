@@ -7,16 +7,16 @@
   <div>
     <button class="btn">
       <% if (theme === "light") { %>
-      <i class="bi bi-brightness-high fs-3"></i>
+      <i class="bi bi-brightness-high fs-3 <%= (theme === "dark") ? "text-light" : "" %>"></i>
       <% } else { %>
-      <i class="bi bi-moon fs-3"></i>
+      <i class="bi bi-moon fs-3 <%= (theme === "dark") ? "text-light" : "" %>"></i>
       <% } %>
     </button>
     <button class="btn" data-bs-toggle="modal" data-bs-target="#langChange">
-      <i class="bi bi-translate fs-3"></i>
+      <i class="bi bi-translate fs-3 <%= (theme === "dark") ? "text-light" : "" %>"></i>
     </button>
     <button class="btn">
-      <i class="bi bi-question-circle fs-3"></i>
+      <i class="bi bi-question-circle fs-3 <%= (theme === "dark") ? "text-light" : "" %>"></i>
     </button>
   </div>
 </header>
@@ -65,9 +65,9 @@
     </div>
 
     <% } else { let position = 0; checks.forEach(check => { %>
-    <a class="text-decoration-none text-dark cardsChecks" href="/check/<%= position %>">
+    <a class="text-decoration-none <%= (theme === "dark") ? "text-light" : "text-dark" %> cardsChecks" href="/check/<%= position %>">
       <div class="card mb-3">
-        <div class="card-body">
+        <div class="card-body <%= (theme === "dark") ? "text-light bg-dark" : "text-dark" %>">
           <p class="card-title text-capitalize fs-2 fw-semibold">
             <%= check.restaurant %>
           </p>

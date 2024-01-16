@@ -36,7 +36,7 @@
 <h6 class="text-center fw-light fst-italic"><span id="tipCheck">Tip</span>: <%= check.tip * 100 %>&#37;</h6>
 <h6 class="text-center fw-light"><%= check.date %></h6>
 <div class="card shadow-lg border-black check mx-auto px-0">
-  <div class="card-body checkList">
+  <div class="card-body checkList <%= (theme === "dark") ? "text-light bg-dark" : "" %>">
     <% let totalCheck = 0;
        let personPos = 0;%>
     <% check.people.forEach(person => { let personPay = 0; %>
@@ -414,7 +414,7 @@
     <% totalCheck += personPay}); totalCheck *= (1 + check.tip); %>
   </div>
 
-  <div class="card-footer">
+  <div class="card-footer <%= (theme === "dark") ? "text-light bg-dark" : "" %>">
     <div class="d-flex justify-content-between align-items-center">
       <h3 id="checkPrice">Price:</h3>
       <h3 class="<%= (Math.round((totalCheck + Number.EPSILON) * 100) / 100 != check.price) ? "text-danger" : "text-success"  %>">
