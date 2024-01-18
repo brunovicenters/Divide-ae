@@ -11,7 +11,7 @@
         aria-labelledby="addPersonFormLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
+            <div class="modal-content <%= (theme === "dark") ? "bg-dark text-light" : "" %>">
                 <div class="modal-header">
                     <h2 class="modal-title h2" id="addPersonFormLabel">Add a person</h2>
                     <button

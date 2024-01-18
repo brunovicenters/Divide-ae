@@ -35,10 +35,10 @@
 <h3 class="text-center"><span id="finalPrice">Final Price</span>: <%= currency.format(check.price) %></h3>
 <h6 class="text-center fw-light fst-italic"><span id="tipCheck">Tip</span>: <%= check.tip * 100 %>&#37;</h6>
 <h6 class="text-center fw-light"><%= check.date %></h6>
-<div class="card shadow-lg border-black check mx-auto px-0">
+<div class="card shadow-lg <%= (theme === "dark") ? "bg-dark text-light border-white" : "border-black" %> check mx-auto px-0">
   <div class="card-body checkList <%= (theme === "dark") ? "text-light bg-dark" : "" %>">
     <% let totalCheck = 0;
-       let personPos = 0;%>
+        let personPos = 0;%>
     <% check.people.forEach(person => { let personPay = 0; %>
     <% person.orders.forEach(order => { personPay +=
     order.price*order.quantity; }) %>
@@ -75,7 +75,7 @@
           aria-labelledby="editPersonFormLabel<%= personPos %>"
           aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
+            <div class="modal-content <%= (theme === "dark") ? "bg-dark text-light" : "" %>">
               <div class="modal-header">
                   <h2 class="modal-title h2" id="editPersonFormLabel<%= personPos %>"><%= (language == "pt" ? "Editar" : "Edit") %> <%= person.name %></h2>
                   <button
@@ -247,7 +247,7 @@
               aria-labelledby="delPersonFormLabel<%= personPos %>"
               aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
+                <div class="modal-content <%= (theme === "dark") ? "bg-dark text-light" : "" %>">
                   <% if (check.people.length > 1) { %>
                     <div class="modal-header">
                       <h2 class="modal-title h2" id="delPersonFormLabel<%= personPos %>"><%= (language == "pt" ? "Deletar" : "Delete")  %> <%= person.name %>?</h2>
@@ -325,7 +325,7 @@
               aria-labelledby="addOrderFormLabel<%= personPos %>"
               aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
+                <div class="modal-content <%= (theme === "dark") ? "bg-dark text-light" : "" %>">
                     <div class="modal-header">
                       <h2 class="modal-title h2" id="addOrderFormLabel<%= personPos %>"><%= (language == "pt" ? "Adicionar pedido" : "Add order")  %></h2>
                       <button
