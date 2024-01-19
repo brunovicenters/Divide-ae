@@ -66,6 +66,16 @@ const getDate = () => {
   return date;
 };
 
+// SEED DATA
+let devTest = new Check(
+  "Testing",
+  125.99,
+  getDate(),
+  new Person("Bruno", new Order("pão de queijo", "4", "25.99")),
+  0
+);
+store.set("checks", [devTest]);
+
 app.get("/", (req, res) => {
   res.render("check/home", {
     checks: store.get("checks"),
@@ -81,16 +91,6 @@ app.get("/", (req, res) => {
     language: store.get("language"),
   });
 });
-
-// SEED DATA
-let devTest = new Check(
-  "Testing",
-  125.99,
-  getDate(),
-  new Person("Bruno", new Order("pão de queijo", "4", "25.99")),
-  0
-);
-store.set("checks", [devTest]);
 
 app.get("/check/:arrPos", (req, res) => {
   req.query.idiom ? store.set("language", req.query.idiom) : null;
@@ -256,10 +256,29 @@ app.get("/deleteOrder/:arrPos/:personPos/:orderPos", (req, res) => {
   res.redirect("/check/" + (checks.length - 1));
 });
 
-// app.post("/changeLanguage", (req, res) => {
-//   store.set("language", req.body.language);
-//   res.redirect("/");
-// });
+app.post("/theme", (req, res) => {
+  const screenTheme = req.query.theme;
+
+  if (screenTheme === "light") {
+    store.set("theme", "light");
+  } else {
+    store.set("theme", "dark");
+  }
+
+  res.render("check/home", {
+    checks: store.get("checks"),
+    currency:
+      store.get("language") == "en"
+        ? usdCurrency
+        : store.get("language") == "pt"
+        ? brlCurrency
+        : store.get("language") == "uk"
+        ? gbpCurrency
+        : eurCurrency,
+    theme: store.get("theme"),
+    language: store.get("language"),
+  });
+});
 
 app.delete("/deleteAll", (req, res) => {
   store.set("checks", []);

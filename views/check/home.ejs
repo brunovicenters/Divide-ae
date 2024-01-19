@@ -4,14 +4,20 @@
 <header class="d-flex justify-content-between align-items-center mt-2 mb-2">
   <h1 id="title">Split it!</h1>
 
-  <div>
-    <button class="btn">
-      <% if (theme === "light") { %>
-      <i class="bi bi-brightness-high fs-3 <%= (theme === "dark") ? "text-light" : "" %>"></i>
-      <% } else { %>
-      <i class="bi bi-moon fs-3 <%= (theme === "dark") ? "text-light" : "" %>"></i>
-      <% } %>
-    </button>
+  <div class="d-flex gap-1">
+    <% if (theme === "light") { %>
+      <form action="/theme?theme=dark" method="post">
+        <button class="btn">
+          <i class="bi bi-brightness-high fs-3"></i>
+        </button>
+      </form>
+    <% } else { %>
+      <form action="/theme?theme=light" method="post">
+        <button class="btn">
+          <i class="bi bi-moon fs-3 text-light"></i>
+        </button>
+      </form>
+    <% } %>
     <button class="btn" data-bs-toggle="modal" data-bs-target="#langChange">
       <i class="bi bi-translate fs-3 <%= (theme === "dark") ? "text-light" : "" %>"></i>
     </button>
