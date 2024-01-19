@@ -60,6 +60,7 @@ const activeLang = (lang) => {
   const totalPriceText = document.querySelectorAll(".totalPriceText");
   const tipHome = document.querySelectorAll(".tipHome");
   const dateHome = document.querySelectorAll(".dateHome");
+  const languageTheme = document.querySelector("#languageTheme");
 
   // SET CURRENCIES
   switch (lang) {
@@ -113,6 +114,8 @@ const activeLang = (lang) => {
     cardsChecks[i].href = url.split("/?")[0];
     cardsChecks[i].href = cardsChecks[i].href + "/?idiom=" + lang;
   }
+
+  languageTheme.value = lang;
 };
 
 const createMultiLanguage = (language) => {

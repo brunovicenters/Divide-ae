@@ -7,12 +7,14 @@
   <div class="d-flex gap-1">
     <% if (theme === "light") { %>
       <form action="/theme?theme=dark" method="post">
+        <input type="text" name="lang" class="d-none" value="<%= language %>" id="languageTheme">
         <button class="btn">
           <i class="bi bi-brightness-high fs-3"></i>
         </button>
       </form>
     <% } else { %>
       <form action="/theme?theme=light" method="post">
+        <input type="text" name="lang" class="d-none" value="<%= language %>" id="languageTheme">
         <button class="btn">
           <i class="bi bi-moon fs-3 text-light"></i>
         </button>

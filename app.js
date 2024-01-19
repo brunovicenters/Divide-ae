@@ -258,12 +258,15 @@ app.get("/deleteOrder/:arrPos/:personPos/:orderPos", (req, res) => {
 
 app.post("/theme", (req, res) => {
   const screenTheme = req.query.theme;
+  const screenLanguage = req.body.lang;
 
   if (screenTheme === "light") {
     store.set("theme", "light");
   } else {
     store.set("theme", "dark");
   }
+
+  store.set("language", screenLanguage);
 
   res.render("check/home", {
     checks: store.get("checks"),
