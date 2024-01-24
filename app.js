@@ -70,6 +70,7 @@ const getDate = () => {
 let devTest = new Check(
   "Testing",
   125.99,
+  0,
   getDate(),
   new Person("Bruno", new Order("pão de queijo", "4", "25.99")),
   0
@@ -120,6 +121,7 @@ app.post("/addCheck", (req, res) => {
       new Check(
         check.restaurant,
         check.totalPrice,
+        check.discount,
         getDate(),
         new Person(check.person, new Order(check.dish, check.qty, check.price)),
         check.tip / 100
@@ -141,6 +143,7 @@ app.put("/editCheck/:arrPos", (req, res) => {
     check.date = getDate();
     check.restaurant = c.restaurant;
     check.tip = c.tip / 100;
+    check.discount = c.discount;
     check.price = c.totalPrice;
     checks.push(check);
     store.set("checks", checks);
