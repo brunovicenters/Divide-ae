@@ -15,12 +15,21 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/assets/style.css" />
-    <title>SplitCheck</title>
+    <title id="pageTitle">Split it!</title>
   </head>
   <body class="vh-100 d-flex flex-column position-relative <%= (theme === "dark") ? "bg-dark text-light" : "" %>">
     <!-- JSON Translation -->
     <script id="translation-sheet" type="application/json">
       [
+        {
+          "id":"pageTitle",
+          "langs":
+          {
+            "en":"Split it!",
+            "uk":"Split it!",
+            "pt":"Divide aê!"
+          }
+        },
         {
           "id":"title",
           "langs":
