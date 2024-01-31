@@ -76,24 +76,6 @@
                             required />
                         <div id="editTotalPriceError" class="invalid-feedback">What's the total price? Enter a valid value!</div>
                     </div>
-                    <!-- Discount -->
-                    <div class="mb-3">
-                        <label id="editDiscount" for="discountEdit" class="form-label">
-                            Checks's Discount:
-                        </label>
-                        <input
-                            type="number"
-                            name="check[discount]"
-                            id="discountEdit"
-                            min="0"
-                            step="0.01"
-                            placeholder="Discount price..."
-                            class="form-control"
-                            onchange="this.value = this.value.replace(/,/g, '.')"
-                            value="<%= check.discount %>"
-                            required />
-                        <div id="editDiscountError" class="invalid-feedback">What's the discount? Enter a valid value!</div>
-                    </div>
                 </div>
                 
                 <div class="modal-footer">
