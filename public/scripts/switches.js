@@ -73,7 +73,7 @@ const activeLang = (lang) => {
         }
       }
       for (let i = 0; i < totalPriceText.length; i++) {
-        totalPriceText[i].textContent = "Total price";
+        totalPriceText[i].textContent = "Final price";
         tipHome[i].textContent = "Tip";
         dateHome[i].textContent = "Date";
       }
@@ -87,7 +87,7 @@ const activeLang = (lang) => {
         }
       }
       for (let i = 0; i < totalPriceText.length; i++) {
-        totalPriceText[i].textContent = "Total price";
+        totalPriceText[i].textContent = "Final price";
         tipHome[i].textContent = "Tip";
         dateHome[i].textContent = "Date";
       }
@@ -101,7 +101,7 @@ const activeLang = (lang) => {
         }
       }
       for (let i = 0; i < totalPriceText.length; i++) {
-        totalPriceText[i].textContent = "Preço total";
+        totalPriceText[i].textContent = "Preço final";
         tipHome[i].textContent = "Gorjeta";
         dateHome[i].textContent = "Data";
       }
