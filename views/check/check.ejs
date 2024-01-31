@@ -33,6 +33,7 @@
   <%= check.restaurant %>
 </h1>
 <h3 class="text-center"><span id="finalPrice">Final Price</span>: <%= currency.format(check.price) %></h3>
+<h6 class="text-center fw-semibold fst-italic"><span id="discountCheck">Discount</span>: <%= currency.format(check.discount) %></h6>
 <h6 class="text-center fw-light fst-italic"><span id="tipCheck">Tip</span>: <%= check.tip * 100 %>&#37;</h6>
 <h6 class="text-center fw-light"><%= check.date %></h6>
 <div class="card shadow-lg <%= (theme === "dark") ? "bg-dark text-light border-white" : "border-black" %> check mx-auto px-0">
@@ -412,6 +413,7 @@
 
     <% personPos++; %>
     <% totalCheck += personPay});
+    totalCheck -= check.discount;
     totalCheck *= (1 + check.tip); %>
   </div>
 
