@@ -10,6 +10,17 @@ const Check = require("./controller/check");
 const Person = require("./controller/person");
 const Order = require("./controller/order");
 
+const checkRoutes = require("./routes/check");
+
+const {
+  usdCurrency,
+  brlCurrency,
+  gbpCurrency,
+  eurCurrency,
+} = require("./utils/currency");
+
+const getDate = require("./utils/getDate");
+
 app.engine("ejs", ejsMate);
 
 app.use(express.urlencoded({ extended: true }));
@@ -25,47 +36,6 @@ store.set("checks", []);
 store.set("theme", "dark");
 store.set("language", "en");
 
-// DELETE LATER
-const usdCurrency = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-  minimumFractionDigits: 2,
-});
-
-const brlCurrency = new Intl.NumberFormat("pt-BR", {
-  style: "currency",
-  currency: "BRL",
-  minimumFractionDigits: 2,
-});
-
-const eurCurrency = new Intl.NumberFormat("en-DE", {
-  style: "currency",
-  currency: "EUR",
-  minimumFractionDigits: 2,
-});
-
-const gbpCurrency = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "GBP",
-  minimumFractionDigits: 2,
-});
-
-const getDate = () => {
-  const d = new Date();
-  let h =
-    d.getHours().toString().length == 1 ? "0" + d.getHours() : d.getHours();
-  let min =
-    d.getMinutes().toString().length == 1
-      ? "0" + d.getMinutes()
-      : d.getMinutes();
-  let day = d.getDate();
-  let month = d.getMonth() + 1;
-  let year = d.getFullYear();
-
-  let date = h + ":" + min + ", " + day + "/" + month + "/" + year;
-  return date;
-};
-
 // SEED DATA
 let devTest = new Check(
   "Testing",
@@ -75,6 +45,8 @@ let devTest = new Check(
   0
 );
 store.set("checks", [devTest]);
+
+app.use("/check", checkRoutes);
 
 app.get("/", (req, res) => {
   res.render("check/home", {
@@ -92,70 +64,70 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/check/:arrPos", (req, res) => {
-  req.query.idiom ? store.set("language", req.query.idiom) : null;
-  const check = store.get("checks")[req.params.arrPos];
-  res.render("check/check", {
-    check: check,
-    currency:
-      store.get("language") == "en"
-        ? usdCurrency
-        : store.get("language") == "pt"
-        ? brlCurrency
-        : store.get("language") == "uk"
-        ? gbpCurrency
-        : eurCurrency,
-    position: req.params.arrPos,
-    theme: store.get("theme"),
-    language: store.get("language"),
-  });
-});
+// app.get("/check/:arrPos", (req, res) => {
+//   req.query.idiom ? store.set("language", req.query.idiom) : null;
+//   const check = store.get("checks")[req.params.arrPos];
+//   res.render("check/check", {
+//     check: check,
+//     currency:
+//       store.get("language") == "en"
+//         ? usdCurrency
+//         : store.get("language") == "pt"
+//         ? brlCurrency
+//         : store.get("language") == "uk"
+//         ? gbpCurrency
+//         : eurCurrency,
+//     position: req.params.arrPos,
+//     theme: store.get("theme"),
+//     language: store.get("language"),
+//   });
+// });
 
-app.post("/check/addCheck", (req, res) => {
-  req.body.language ? store.set("language", req.body.language) : null;
-  const checks = store.get("checks");
-  const check = req.body.check;
-  try {
-    checks.push(
-      new Check(
-        check.restaurant,
-        check.totalPrice,
-        getDate(),
-        new Person(check.person, new Order(check.dish, check.qty, check.price)),
-        check.tip / 100
-      )
-    );
-    store.set("checks", checks);
-  } catch (error) {
-    console.log(error);
-  }
-  res.redirect("/check/" + (checks.length - 1));
-});
+// app.post("/check/addCheck", (req, res) => {
+//   req.body.language ? store.set("language", req.body.language) : null;
+//   const checks = store.get("checks");
+//   const check = req.body.check;
+//   try {
+//     checks.push(
+//       new Check(
+//         check.restaurant,
+//         check.totalPrice,
+//         getDate(),
+//         new Person(check.person, new Order(check.dish, check.qty, check.price)),
+//         check.tip / 100
+//       )
+//     );
+//     store.set("checks", checks);
+//   } catch (error) {
+//     console.log(error);
+//   }
+//   res.redirect("/check/" + (checks.length - 1));
+// });
 
-app.put("/check/editCheck/:arrPos", (req, res) => {
-  const checks = store.get("checks");
-  const check = checks[req.params.arrPos];
-  const c = req.body.check;
-  try {
-    checks.splice(req.params.arrPos, 1);
-    check.date = getDate();
-    check.restaurant = c.restaurant;
-    check.tip = c.tip / 100;
-    check.price = c.totalPrice;
-    checks.push(check);
-    store.set("checks", checks);
-  } catch (error) {
-    console.log(error);
-  }
-  res.redirect("/check/" + (checks.length - 1));
-});
-
-app.delete("/check/deleteCheck/:arrPos", (req, res) => {
-  const checks = store.get("checks");
-  checks.splice(req.params.arrPos, 1);
-  store.set("checks", checks);
-  res.redirect("/");
-});
+// app.put("/check/editCheck/:arrPos", (req, res) => {
+//   const checks = store.get("checks");
+//   const check = checks[req.params.arrPos];
+//   const c = req.body.check;
+//   try {
+//     checks.splice(req.params.arrPos, 1);
+//     check.date = getDate();
+//     check.restaurant = c.restaurant;
+//     check.tip = c.tip / 100;
+//     check.price = c.totalPrice;
+//     checks.push(check);
+//     store.set("checks", checks);
+//   } catch (error) {
+//     console.log(error);
+//   }
+//   res.redirect("/check/" + (checks.length - 1));
+// });
+//
+// app.delete("/check/deleteCheck/:arrPos", (req, res) => {
+//   const checks = store.get("checks");
+//   checks.splice(req.params.arrPos, 1);
+//   store.set("checks", checks);
+//   res.redirect("/");
+// });
 
 app.post("/person/addPerson/:arrPos", (req, res) => {
   const checks = store.get("checks");
@@ -283,10 +255,10 @@ app.post("/theme", (req, res) => {
   });
 });
 
-app.delete("/check/deleteAll", (req, res) => {
-  store.set("checks", []);
-  res.redirect("/");
-});
+// app.delete("/check/deleteAll", (req, res) => {
+//   store.set("checks", []);
+//   res.redirect("/");
+// });
 
 app.get("*", (req, res) => {
   res.render("layouts/404", {
