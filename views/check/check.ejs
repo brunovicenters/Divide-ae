@@ -63,7 +63,7 @@
 
       <!-- MODAL EDIT PERSON -->
       <form
-        action="/editPerson/<%= position %>/<%= personPos %>?_method=PUT"
+        action="/person/editPerson/<%= position %>/<%= personPos %>?_method=PUT"
         method="POST"
         novalidate
         class="validated-form w-100">
@@ -233,7 +233,7 @@
           </button>
 
           <form
-            action="/deletePerson/<%= position %>/<%= personPos %>?_method=DELETE"
+            action="/person/deletePerson/<%= position %>/<%= personPos %>?_method=DELETE"
             method="POST"
             novalidate
             class="validated-form w-100">
