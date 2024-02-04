@@ -221,7 +221,7 @@ app.delete("/person/deletePerson/:arrPos/:personPos", (req, res) => {
   res.redirect("/check/" + (checks.length - 1));
 });
 
-app.post("/addOrder/:arrPos/:personPos", (req, res) => {
+app.post("/order/addOrder/:arrPos/:personPos", (req, res) => {
   const checks = store.get("checks");
   const check = checks[req.params.arrPos];
   const person = check.people[req.params.personPos];
@@ -238,7 +238,7 @@ app.post("/addOrder/:arrPos/:personPos", (req, res) => {
   res.redirect("/check/" + (checks.length - 1));
 });
 
-app.get("/deleteOrder/:arrPos/:personPos/:orderPos", (req, res) => {
+app.get("/order/deleteOrder/:arrPos/:personPos/:orderPos", (req, res) => {
   const checks = store.get("checks");
   const check = checks[req.params.arrPos];
   const person = check.people[req.params.personPos];
