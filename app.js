@@ -111,7 +111,7 @@ app.get("/check/:arrPos", (req, res) => {
   });
 });
 
-app.post("/addCheck", (req, res) => {
+app.post("/check/addCheck", (req, res) => {
   req.body.language ? store.set("language", req.body.language) : null;
   const checks = store.get("checks");
   const check = req.body.check;
@@ -132,7 +132,7 @@ app.post("/addCheck", (req, res) => {
   res.redirect("/check/" + (checks.length - 1));
 });
 
-app.put("/editCheck/:arrPos", (req, res) => {
+app.put("/check/editCheck/:arrPos", (req, res) => {
   const checks = store.get("checks");
   const check = checks[req.params.arrPos];
   const c = req.body.check;
@@ -150,7 +150,7 @@ app.put("/editCheck/:arrPos", (req, res) => {
   res.redirect("/check/" + (checks.length - 1));
 });
 
-app.delete("/deleteCheck/:arrPos", (req, res) => {
+app.delete("/check/deleteCheck/:arrPos", (req, res) => {
   const checks = store.get("checks");
   checks.splice(req.params.arrPos, 1);
   store.set("checks", checks);
@@ -283,7 +283,7 @@ app.post("/theme", (req, res) => {
   });
 });
 
-app.delete("/deleteAll", (req, res) => {
+app.delete("/check/deleteAll", (req, res) => {
   store.set("checks", []);
   res.redirect("/");
 });
