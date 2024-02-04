@@ -1,0 +1,56 @@
+<form
+    action="/addSideDish"
+    method="POST"
+    novalidate
+    class="validated-form w-100">
+
+    <!-- Modal -->
+    <div
+    class="modal fade"
+    id="addSideDish"
+    tabindex="-1"
+    aria-labelledby="addSideDishLabel"
+    aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content <%= (theme === "dark") ? "bg-dark text-light" : "" %>">
+                <div class="modal-header">
+                    <h2 class="modal-title h2" id="addSideDishLabel">Add a side dish</h2>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <!-- Side dish's name -->
+                    <div class="mb-3">
+                        <label id="addSideDishName" for="sideDishAdd" class="form-label">
+                            Side dish's name:
+                        </label>
+                        <input
+                            type="text"
+                            name="name"
+                            id="sideDishAdd"
+                            placeholder="Side dish..."
+                            class="form-control"
+                            required />
+                        <div class="invalid-feedback" id="sideDishNameError">What side dish was it?</div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button
+                    id="closeAddCheckBtn"
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+                    Close
+                    </button>
+                    <button id="addCheckBtn" class="btn btn-success">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>

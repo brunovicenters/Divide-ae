@@ -425,13 +425,21 @@
   </div>
 
   <!-- MODAL ADD PERSON -->
-  <button type="button" class="btn btn-success"
+  <button type="button" class="btn btn-success rounded-top-3 rounded-bottom-0"
     data-bs-toggle="modal"
     data-bs-target="#addPersonForm">
     <i class="bi bi-person-plus fs-3"></i>
   </button>
 
   <%- include("./../partials/addPersonForm")  %>
+
+  <button type="button" class="btn btn-primary rounded-top-0"
+    data-bs-toggle="modal"
+    data-bs-target="#addSideDish">
+    <i class="bi bi-journal-plus fs-3"></i>
+  </button>
+
+  <%- include("./../partials/addSideDish")  %>
 
 </div>
 
