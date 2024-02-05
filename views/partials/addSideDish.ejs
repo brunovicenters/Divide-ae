@@ -1,5 +1,5 @@
 <form
-    action="/addSideDish"
+    action="/sideDish/addSideDish"
     method="POST"
     novalidate
     class="validated-form w-100">
@@ -25,17 +25,50 @@
                 <div class="modal-body">
                     <!-- Side dish's name -->
                     <div class="mb-3">
-                        <label id="addSideDishName" for="sideDishAdd" class="form-label">
+                        <label id="addSideDishName" for="sideDishAddName" class="form-label">
                             Side dish's name:
                         </label>
                         <input
                             type="text"
                             name="name"
-                            id="sideDishAdd"
-                            placeholder="Side dish..."
+                            id="sideDishAddName"
+                            placeholder="Side dish's name..."
                             class="form-control"
                             required />
                         <div class="invalid-feedback" id="sideDishNameError">What side dish was it?</div>
+                    </div>
+                    <!-- Side dish's price -->
+                    <div class="mb-3">
+                        <label id="addSideDishPrice" for="sideDishAddPrice" class="form-label">
+                            Side dish's price:
+                        </label>
+                        <input
+                            type="text"
+                            name="name"
+                            id="sideDishAddPrice"
+                            placeholder="Side dish's price..."
+                            class="form-control"
+                            required />
+                        <div class="invalid-feedback" id="sideDishPriceError">How much did it cost?</div>
+                    </div>
+                    <!-- People who ate it -->
+                    <hr>
+                    <h3>People who ate it:</h3>
+                    <div class="mb-3 container">
+                        <div class="row">
+                            <% let p = 0;
+                                check.people.forEach((person) => { %>
+                                <div class="col-6 mt-3">
+                                    <input
+                                        type="checkbox"
+                                        id="sideDishAddPerson<%= p %>"
+                                        name="people[arrPosition]"
+                                        value="<%= p %>"
+                                        >
+                                    <label for="sideDishAddPerson<%= p %>"><%= person.name %></label>
+                                </div>
+                            <% p++; }); %>
+                        </div>
                     </div>
                 </div>
 
