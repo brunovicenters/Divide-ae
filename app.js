@@ -13,6 +13,7 @@ const Order = require("./controller/order");
 const checkRoutes = require("./routes/check");
 const personRoutes = require("./routes/person");
 const orderRoutes = require("./routes/order");
+const sideDishRoutes = require("./routes/sideDish");
 
 const {
   usdCurrency,
@@ -51,6 +52,7 @@ store.set("checks", [devTest]);
 app.use("/check", checkRoutes);
 app.use("/person", personRoutes);
 app.use("/order", orderRoutes);
+app.use("/sideDish", sideDishRoutes);
 
 app.get("/", (req, res) => {
   res.render("check/home", {
