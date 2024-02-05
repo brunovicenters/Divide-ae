@@ -43,11 +43,13 @@
                             Side dish's price:
                         </label>
                         <input
-                            type="text"
+                            type="number"
                             name="name"
                             id="sideDishAddPrice"
                             placeholder="Side dish's price..."
                             class="form-control"
+                            step="0.01"
+                            onchange="this.value = this.value.replace(/,/g, '.')"
                             required />
                         <div class="invalid-feedback" id="sideDishPriceError">How much did it cost?</div>
                     </div>
