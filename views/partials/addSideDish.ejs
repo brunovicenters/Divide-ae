@@ -44,7 +44,7 @@
                         </label>
                         <input
                             type="number"
-                            name="name"
+                            name="price"
                             id="sideDishAddPrice"
                             placeholder="Side dish's price..."
                             class="form-control"
@@ -64,7 +64,7 @@
                                     <input
                                         type="checkbox"
                                         id="sideDishAddPerson<%= p %>"
-                                        name="people[arrPosition]"
+                                        name="people[]"
                                         value="<%= p %>"
                                         >
                                     <label for="sideDishAddPerson<%= p %>"><%= person.name %></label>
