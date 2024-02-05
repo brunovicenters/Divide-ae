@@ -5,6 +5,7 @@ class Check {
     this.date = date;
     this.people = [people];
     this.tip = tip;
+    this.sideDishes = [];
   }
 }
 
