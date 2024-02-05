@@ -12,6 +12,7 @@ const Order = require("./controller/order");
 
 const checkRoutes = require("./routes/check");
 const personRoutes = require("./routes/person");
+const orderRoutes = require("./routes/order");
 
 const {
   usdCurrency,
@@ -49,6 +50,7 @@ store.set("checks", [devTest]);
 
 app.use("/check", checkRoutes);
 app.use("/person", personRoutes);
+app.use("/order", orderRoutes);
 
 app.get("/", (req, res) => {
   res.render("check/home", {
@@ -64,41 +66,6 @@ app.get("/", (req, res) => {
     theme: store.get("theme"),
     language: store.get("language"),
   });
-});
-
-app.post("/order/addOrder/:arrPos/:personPos", (req, res) => {
-  const checks = store.get("checks");
-  const check = checks[req.params.arrPos];
-  const person = check.people[req.params.personPos];
-  const order = req.body.order;
-  try {
-    checks.splice(req.params.arrPos, 1);
-    check.date = getDate();
-    person.orders.push(new Order(order.food, order.qty, order.price));
-    checks.push(check);
-    store.set("checks", checks);
-  } catch (error) {
-    console.log(error);
-  }
-  res.redirect("/check/" + (checks.length - 1));
-});
-
-app.get("/order/deleteOrder/:arrPos/:personPos/:orderPos", (req, res) => {
-  const checks = store.get("checks");
-  const check = checks[req.params.arrPos];
-  const person = check.people[req.params.personPos];
-  try {
-    checks.splice(req.params.arrPos, 1);
-    check.people.splice(req.params.personPos, 1);
-    check.date = getDate();
-    person.orders.splice(req.params.orderPos, 1);
-    check.people.splice(req.params.personPos, 0, person);
-    checks.push(check);
-    store.set("checks", checks);
-  } catch (error) {
-    console.log(error);
-  }
-  res.redirect("/check/" + (checks.length - 1));
 });
 
 app.post("/theme", (req, res) => {
@@ -127,11 +94,6 @@ app.post("/theme", (req, res) => {
     language: store.get("language"),
   });
 });
-
-// app.delete("/check/deleteAll", (req, res) => {
-//   store.set("checks", []);
-//   res.redirect("/");
-// });
 
 app.get("*", (req, res) => {
   res.render("layouts/404", {
