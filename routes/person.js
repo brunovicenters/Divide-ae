@@ -2,16 +2,8 @@ const express = require("express");
 const router = express.Router();
 const store = require("store");
 
-const Check = require("../controller/check");
 const Person = require("../controller/person");
 const Order = require("../controller/order");
-
-const {
-  usdCurrency,
-  brlCurrency,
-  gbpCurrency,
-  eurCurrency,
-} = require("../utils/currency");
 
 const getDate = require("../utils/getDate");
 
