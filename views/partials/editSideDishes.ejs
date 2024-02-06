@@ -78,6 +78,7 @@
                                 <% check.people.forEach((person) => { %>
                                     <div class="col-6 mt-3">
                                         <input
+                                            class="sideDishPeople"
                                             type="checkbox"
                                             id="sideDishAddPerson<%= p %><%= d %>"
                                             name="people[<%= d %>][]"
@@ -100,7 +101,7 @@
                     data-bs-dismiss="modal">
                     Close
                     </button>
-                    <button id="addSideDishBtn" class="btn btn-success">Edit</button>
+                    <button type="submit" id="addSideDishBtn" class="btn btn-success" onclick="return validateCheckbox(1)" >Edit</button>
                 </div>
             </div>
         </div>
