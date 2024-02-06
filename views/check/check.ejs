@@ -39,8 +39,13 @@
   <div class="card-body checkList <%= (theme === "dark") ? "text-light bg-dark" : "" %>">
     <% let totalCheck = 0;
         let personPos = 0;%>
-    <% check.people.forEach(person => { let personPay = 0; %>
-    <% person.orders.forEach(order => { personPay +=
+    <% check.people.forEach(person => { let personPay = 0;
+      for(let i = 0; i < check.sideDishes.length; i++){
+      if (check.sideDishes[i].people.includes(personPos)){
+        personPay += check.sideDishes[i].price / check.sideDishes[i].people.length;
+      }
+    }%>
+    <% person.orders.forEach(order => {personPay +=
     order.price*order.quantity; }) %>
     
     <div class="mb-3">
@@ -401,6 +406,14 @@
               currency.format(order.price) %>
             </p>
           <% }) %>
+          <% for(let i = 0; i < check.sideDishes.length; i++){
+            if (check.sideDishes[i].people.includes(personPos)){%>
+              <p class="text-capitalize text-end">
+              <%= check.sideDishes[i].dish %> ........ 1x <%=
+              currency.format(check.sideDishes[i].price) %>
+            </p>
+          <% }} %>
+          
         </div>
       </div>
     </div>
@@ -410,6 +423,14 @@
     <% personPos++; %>
     <% totalCheck += personPay});
     totalCheck *= (1 + check.tip); %>
+    <% if (check.sideDishes.length > 0) { %>
+      <h1>Side Dishes</h1>
+      <% check.sideDishes.forEach(sideDish => { %>
+        <p class="text-capitalize text-end">
+          <%= sideDish.dish %> ........ <%= currency.format(sideDish.price) %>
+        </p>
+      <% });%>
+    <% } %>
   </div>
 
   <div class="card-footer mb-1 <%= (theme === "dark") ? "text-light bg-dark" : "" %>">
