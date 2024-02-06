@@ -34,6 +34,48 @@ router.post("/addSideDish/:arrPos", (req, res) => {
   }
 });
 
+router.put("/editSideDish/:arrPos", (req, res) => {
+  const checks = store.get("checks");
+  const check = checks[req.params.arrPos];
+  const sd = req.body;
+
+  let peopleData = [];
+
+  if (sd.people.length > 1) {
+    for (let i = 0; i < sd.people.length; i++) {
+      const sdPeople = sd.people[i].map((person) => {
+        return parseInt(person);
+      });
+      peopleData.push(sdPeople);
+    }
+  } else {
+    peopleData = sd.people[0].map((person) => {
+      return parseInt(person);
+    });
+  }
+
+  try {
+    checks.splice(req.params.arrPos, 1);
+    check.date = getDate();
+    if (Array.isArray(sd.name)) {
+      for (let i = 0; i < sd.name.length; i++) {
+        check.sideDishes[i].dish = sd.name[i];
+        check.sideDishes[i].price = sd.price[i];
+        check.sideDishes[i].people = peopleData[i];
+      }
+    } else {
+      check.sideDishes[0].dish = sd.name;
+      check.sideDishes[0].price = sd.price;
+      check.sideDishes[0].people = peopleData;
+    }
+    checks.push(check);
+    store.set("checks", checks);
+  } catch (error) {
+    console.log(error);
+  }
+  res.redirect("/check/" + (checks.length - 1));
+});
+
 router.get("/deleteSideDish/:arrPos/:sdPos", (req, res) => {
   const checks = store.get("checks");
   const check = checks[req.params.arrPos];

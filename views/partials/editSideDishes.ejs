@@ -1,0 +1,109 @@
+<form
+    action="/sideDish/editSideDish/<%= position %>?_method=PUT"
+    method="POST"
+    novalidate
+    class="validated-form w-100">
+
+    <!-- Modal -->
+    <div
+    class="modal fade"
+    id="editSideDishes"
+    tabindex="-1"
+    aria-labelledby="editSideDishesLabel"
+    aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content <%= (theme === "dark") ? "bg-dark text-light" : "" %>">
+                <div class="modal-header">
+                    <h2 class="modal-title h2" id="editSideDishesLabel">Edit side dishes:</h2>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <% let d = 0; %>
+                    <% check.sideDishes.forEach((sideDish) => { %>
+                        <% if (d>0) { %>
+                            <hr class="border border-3">
+                        <% } %>
+                        <div class="mb-3 d-flex justify-content-between align-items-center">
+                            <h3>Side dish <%= d + 1 %></h3>
+                            <a
+                            href="/sideDish/deleteSideDish/<%= position %>/<%= d %>"
+                            class="btn btn-outline-danger"
+                            onclick="return confirm('Are you sure?')">
+                                <i class="bi bi-trash fs-3"></i>
+                            </a>
+                        </div>
+                        <!-- Side dish's name -->
+                        <div class="mb-3">
+                            <label for="sideDishAddName<%= d %>" class="form-label">
+                                Side dish's name:
+                            </label>
+                            <input
+                                type="text"
+                                name="name"
+                                id="sideDishAddName<%= d %>"
+                                placeholder="Side dish's name..."
+                                class="form-control"
+                                value="<%= sideDish.dish %>"
+                                required />
+                            <div class="invalid-feedback" id="sideDishNameError">What side dish was it?</div>
+                        </div>
+                        <!-- Side dish's price -->
+                        <div class="mb-3">
+                            <label for="sideDishAddPrice<%= d %>" class="form-label">
+                                Side dish's price:
+                            </label>
+                            <input
+                                type="number"
+                                name="price"
+                                id="sideDishAddPrice<%= d %>"
+                                placeholder="Side dish's price..."
+                                class="form-control"
+                                step="0.01"
+                                onchange="this.value = this.value.replace(/,/g, '.')"
+                                value="<%= sideDish.price %>"
+                                required />
+                            <div class="invalid-feedback" id="sideDishPriceError">How much did it cost?</div>
+                        </div>
+                        <!-- People who ate it -->
+                        <hr>
+                        <h3>People who ate it:</h3>
+                        <div class="mb-3 container">
+                            <div class="row">
+                                <% let p = 0;%>
+                                <% check.people.forEach((person) => { %>
+                                    <div class="col-6 mt-3">
+                                        <input
+                                            type="checkbox"
+                                            id="sideDishAddPerson<%= p %><%= d %>"
+                                            name="people[<%= d %>][]"
+                                            value="<%= p %>"
+                                            <% if (sideDish.people.includes(p)) { %>checked<% } %>
+                                            >
+                                        <label for="sideDishAddPerson<%= p %><%= d %>"><%= person.name %></label>
+                                    </div>
+                                <% p++; }); %>
+                            </div>
+                        </div>
+                    <% d++; }) %>
+                </div>
+
+                <div class="modal-footer">
+                    <button
+                    id="closeAddSideDishBtn"
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+                    Close
+                    </button>
+                    <button id="addSideDishBtn" class="btn btn-success">Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
