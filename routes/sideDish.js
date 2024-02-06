@@ -34,4 +34,19 @@ router.post("/addSideDish/:arrPos", (req, res) => {
   }
 });
 
+router.get("/deleteSideDish/:arrPos/:sdPos", (req, res) => {
+  const checks = store.get("checks");
+  const check = checks[req.params.arrPos];
+  try {
+    checks.splice(req.params.arrPos, 1);
+    check.date = getDate();
+    check.sideDishes.splice(req.params.sdPos, 1);
+    checks.push(check);
+    store.set("checks", checks);
+  } catch (error) {
+    console.log(error);
+  }
+  res.redirect("/check/" + (checks.length - 1));
+});
+
 module.exports = router;
