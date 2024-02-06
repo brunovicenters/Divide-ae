@@ -39,12 +39,13 @@
   <div class="card-body checkList <%= (theme === "dark") ? "text-light bg-dark" : "" %>">
     <% let totalCheck = 0;
         let personPos = 0;%>
-    <% check.people.forEach(person => { let personPay = 0;
-      for(let i = 0; i < check.sideDishes.length; i++){
+        
+    <% check.people.forEach(person => { let personPay = 0;%>
+    <% for(let i = 0; i < check.sideDishes.length; i++){
       if (check.sideDishes[i].people.includes(personPos)){
         personPay += check.sideDishes[i].price / check.sideDishes[i].people.length;
       }
-    }%>
+    } %>
     <% person.orders.forEach(order => {personPay +=
     order.price*order.quantity; }) %>
     
@@ -161,7 +162,10 @@
                           <div>
                               <div class="d-flex justify-content-between h5">
                                   <span><%= (language == "pt" ? "Prato" : "Dish")  %> <%= i + 1 %>:</span>
-                                  <a href="/order/deleteOrder/<%= position %>/<%= personPos %>/<%= i %>" class="btn btn-outline-danger">
+                                  <a
+                                    href="/order/deleteOrder/<%= position %>/<%= personPos %>/<%= i %>"
+                                    class="btn btn-outline-danger"
+                                    onclick="return confirm('Are you sure?')">
                                       <i class="bi bi-trash fs-3"></i>
                                   </a>
                               </div>
@@ -406,11 +410,14 @@
               currency.format(order.price) %>
             </p>
           <% }) %>
-          <% for(let i = 0; i < check.sideDishes.length; i++){
-            if (check.sideDishes[i].people.includes(personPos)){%>
+          <!-- personPay blaca -->
+          <% for(let i = 0; i < check.sideDishes.length; i++){ %>
+            <% if (check.sideDishes[i].people.includes(personPos)){%>
+              
               <p class="text-capitalize text-end">
-              <%= check.sideDishes[i].dish %> ........ 1x <%=
-              currency.format(check.sideDishes[i].price) %>
+              <%= check.sideDishes[i].dish %> ........ 1x
+              <%= currency.format(check.sideDishes[i].price / check.sideDishes[i].people.length) %>
+              
             </p>
           <% }} %>
           
@@ -424,7 +431,16 @@
     <% totalCheck += personPay});
     totalCheck *= (1 + check.tip); %>
     <% if (check.sideDishes.length > 0) { %>
-      <h1>Side Dishes</h1>
+      <div class="d-flex align-items-center gap-3">
+        <button
+            type="button"
+            class="btn btn-outline-warning"
+            data-bs-toggle="modal"
+            data-bs-target="#editSideDishes">
+            <i class="bi bi-pencil fs-3"></i>
+          </button>
+        <h1 class="mb-0" >Side Dishes</h1>
+      </div>
       <% check.sideDishes.forEach(sideDish => { %>
         <p class="text-capitalize text-end">
           <%= sideDish.dish %> ........ <%= currency.format(sideDish.price) %>
@@ -432,6 +448,8 @@
       <% });%>
     <% } %>
   </div>
+
+  <%- include("./../partials/editSideDishes")  %>
 
   <div class="card-footer mb-1 <%= (theme === "dark") ? "text-light bg-dark" : "" %>">
     <div class="d-flex justify-content-between align-items-center">
