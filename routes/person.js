@@ -63,6 +63,21 @@ router.delete("/deletePerson/:arrPos/:personPos", (req, res) => {
     checks.splice(req.params.arrPos, 1);
     check.date = getDate();
     check.people.splice(req.params.personPos, 1);
+
+    check.sideDishes.forEach((sd) => {
+      sd.people.splice(req.params.personPos, 1);
+
+      if (sd.people.length == 0) {
+        check.sideDishes.splice(req.params.arrPos, 1);
+      } else {
+        for (let i = 0; i < sd.people.length; i++) {
+          if (sd.people[i] > req.params.personPos) {
+            sd.people[i] = sd.people[i] - 1;
+          }
+        }
+      }
+    });
+
     checks.push(check);
     store.set("checks", checks);
   } catch (error) {
