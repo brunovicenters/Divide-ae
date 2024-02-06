@@ -13,11 +13,14 @@ router.post("/addSideDish/:arrPos", (req, res) => {
   const checks = store.get("checks");
   const data = req.body;
 
+  const peopleData = data.people.map((person) => {
+    return parseInt(person);
+  });
   try {
     const c = { ...store.get("checks")[req.params.arrPos] };
     c.date = getDate();
     c.sideDishes.push(
-      new sideDish(data.name, parseFloat(data.price), data.people)
+      new sideDish(data.name, parseFloat(data.price), peopleData)
     );
     checks.splice(req.params.arrPos, 1);
     checks.push(c);
