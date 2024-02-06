@@ -23,7 +23,7 @@
     <button class="btn" data-bs-toggle="modal" data-bs-target="#langChange">
       <i class="bi bi-translate fs-3 <%= (theme === "dark") ? "text-light" : "" %>"></i>
     </button>
-    <button class="btn">
+    <button class="btn" data-bs-toggle="modal" data-bs-target="#help">
       <i class="bi bi-question-circle fs-3 <%= (theme === "dark") ? "text-light" : "" %>"></i>
     </button>
   </div>
@@ -31,6 +31,9 @@
 
 <!-- MODAL CHANGE LANGUAGE -->
 <%- include("./../partials/langChange")  %>
+
+<!-- MODAL HELP -->
+<%- include("./../partials/help")  %>
 
 <main id="checksContainer">
   <div class="d-flex flex-wrap mb-1 gap-1">
