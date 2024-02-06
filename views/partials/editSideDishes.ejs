@@ -29,7 +29,7 @@
                             <hr class="border border-3">
                         <% } %>
                         <div class="mb-3 d-flex justify-content-between align-items-center">
-                            <h3>Side dish <%= d + 1 %></h3>
+                            <h3><%= (language == "pt" ? "Acompanhamento" : "Side dish")  %> <%= d + 1 %></h3>
                             <a
                             href="/sideDish/deleteSideDish/<%= position %>/<%= d %>"
                             class="btn btn-outline-danger"
@@ -40,38 +40,42 @@
                         <!-- Side dish's name -->
                         <div class="mb-3">
                             <label for="sideDishAddName<%= d %>" class="form-label">
-                                Side dish's name:
+                                <%= (language == "pt" ? "Nome do acompanhamento" : "Side dish's name")  %>:
                             </label>
                             <input
                                 type="text"
                                 name="name"
                                 id="sideDishAddName<%= d %>"
-                                placeholder="Side dish's name..."
+                                placeholder="<%= (language == "pt" ? "Nome do acompanhamento" : "Side dish's name")  %>..."
                                 class="form-control"
                                 value="<%= sideDish.dish %>"
                                 required />
-                            <div class="invalid-feedback" id="sideDishNameError">What side dish was it?</div>
+                            <div class="invalid-feedback" id="sideDishNameError">
+                                <%= (language == "pt" ? "Qual era o acompanhamento" : "What side dish was it")  %>?
+                            </div>
                         </div>
                         <!-- Side dish's price -->
                         <div class="mb-3">
                             <label for="sideDishAddPrice<%= d %>" class="form-label">
-                                Side dish's price:
+                                <%= (language == "pt" ? "Preço do acompanhamento" : "Side dish's price")  %>:
                             </label>
                             <input
                                 type="number"
                                 name="price"
                                 id="sideDishAddPrice<%= d %>"
-                                placeholder="Side dish's price..."
+                                placeholder="<%= (language == "pt" ? "Preço do acompanhamento" : "Side dish's price")  %>..."
                                 class="form-control"
                                 step="0.01"
                                 onchange="this.value = this.value.replace(/,/g, '.')"
                                 value="<%= sideDish.price %>"
                                 required />
-                            <div class="invalid-feedback" id="sideDishPriceError">How much did it cost?</div>
+                            <div class="invalid-feedback" id="sideDishPriceError">
+                                <%= (language == "pt" ? "Quanto custou" : "How much did it cost")  %>?
+                            </div>
                         </div>
                         <!-- People who ate it -->
                         <hr>
-                        <h3>People who ate it:</h3>
+                        <h3><%= (language == "pt" ? "Quem comeu" : "People who ate it")  %>:</h3>
                         <div class="mb-3 container">
                             <div class="row">
                                 <% let p = 0;%>
@@ -95,13 +99,13 @@
 
                 <div class="modal-footer">
                     <button
-                    id="closeAddSideDishBtn"
+                    id="closeEditSideDishBtn"
                     type="button"
                     class="btn btn-secondary"
                     data-bs-dismiss="modal">
-                    Close
+                        Close
                     </button>
-                    <button type="submit" id="addSideDishBtn" class="btn btn-success" onclick="return validateCheckbox(1)" >Edit</button>
+                    <button type="submit" id="editSideDishBtn" class="btn btn-success" onclick="return validateCheckbox(1)" >Edit</button>
                 </div>
             </div>
         </div>
