@@ -205,6 +205,7 @@
                                       placeholder="<%= (language == "pt" ? "Preço por prato" : "Price per dish")  %>..."
                                       class="form-control"
                                       value="<%= person.orders[i].price %>"
+                                      onchange="this.value = this.value.replace(/,/g, '.')"
                                       required />
                                   <div class="invalid-feedback">
                                     <%= (language == "pt" ? "Quanto custou por prato" : "How much did it cost per dish")  %>?
