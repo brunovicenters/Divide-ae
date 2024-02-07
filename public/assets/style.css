@@ -7,3 +7,9 @@
   max-height: 100vh;
   max-width: 100vw;
 }
+.shadowDark {
+  box-shadow: 0 0 0.5em 0.1em rgba(255, 255, 255, 0.3);
+}
+.shadowLight {
+  box-shadow: 0 0 0.5em 0.1em rgba(0, 0, 0, 0.3);
+}
