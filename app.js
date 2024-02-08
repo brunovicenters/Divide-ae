@@ -37,11 +37,11 @@ app.use(methodOverride("_method"));
 
 store.set("checks", []);
 store.set("theme", "dark");
-store.set("language", "en");
+store.set("language", "pt");
 
 // SEED DATA
 let devTest = new Check(
-  "Testing",
+  "Teste",
   125.99,
   getDate(),
   new Person("Bruno", new Order("pão de queijo", "4", "25.99")),
