@@ -13,3 +13,12 @@
 .shadowLight {
   box-shadow: 0 0 0.5em 0.1em rgba(0, 0, 0, 0.3);
 }
+.text-truncateName{
+  max-width: 140px;
+}
+@media (min-width: 500px) {
+  .text-truncateName{
+    max-width: 300px;
+  }
+  
+}
