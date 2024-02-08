@@ -3,53 +3,61 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content <%= (theme === "dark") ? "bg-dark text-light" : "" %>">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="helpLabel">How does <span class="fst-italic">Split it!</span> works?</h1>
+                <h1 class="modal-title fs-5" id="helpLabel">
+                    <% if (language == "pt") {%>
+                        Como funciona o <span class="fst-italic">Divide aê!</span>?
+                    <% } else { %>
+                        How does <span class="fst-italic">Split it!</span> works?
+                    <% } %>
+                </h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div>
-                    <p>The home's menu has 3 buttons:</p>
+                    <p id="homeMenuHelp">The home's menu has 3 buttons:</p>
                     <ul>
                         <li>
-                            <span class="fw-semibold">Theme</span> -
-                            <span>The first button changes the app's theme between light and dark mode</span>.
+                            <span class="fw-semibold" id="themeHelp">Theme</span> -
+                            <span id="themeTextHelp">The first button changes the app's theme between light and dark mode</span>.
                         </li>
                         <li>
-                            <span class="fw-semibold">Languages</span> -
-                            <span>The second button allows you to change the app's language</span>.
+                            <span class="fw-semibold" id="languageHelp">Languages</span> -
+                            <span id="languageTextHelp">The second button allows you to change the app's language</span>.
                         </li>
                         <li>
-                            <span class="fw-semibold">Help</span> -
-                            <span>The third button opens the help modal</span>.
+                            <span class="fw-semibold" id="helpHelp">Help</span> -
+                            <span id="helpTextHelp">The third button opens the help window</span>.
                         </li>
                     </ul>
                     <hr>
                     <img
-                    class="img-fluid <%= (theme === "dark") ? "shadowDark" : "shadowLight" %>"
-                    src="https://res.cloudinary.com/ddmvvgno3/image/upload/v1707327399/SplitIt/TopMenu_mr03ti.png" alt="Image of home's menu"
+                        id="homeMenuImg"
+                        class="img-fluid <%= (theme === "dark") ? "shadowDark" : "shadowLight" %>"
+                        src="https://res.cloudinary.com/ddmvvgno3/image/upload/v1707411921/SplitIt/TopMenu_a1yqja.png" alt="Image of home's menu"
                     />
                     <hr>
                 </div>
                 <div>
-                    <p>The home's screen has 2 buttons and one card:</p>
+                    <p id="homeScreenHelp">The home's screen has 2 buttons and one(or more) checks:</p>
                     <ol>
                         <li>
-                            <span class="fw-semibold">Add check</span> -
-                            <span>The first button opens a window where you can create a new check</span>.
+                            <span class="fw-semibold" id="addCheckHelp">Add check</span> -
+                            <span id="addCheckTextHelp">The first button opens a window where you can create a new check</span>.
                         </li>
                         <li>
-                            <span class="fw-semibold">Delete all</span> -
-                            <span>The second button deletes all checks</span>.
+                            <span class="fw-semibold" id="deleteAllHelp">Delete all</span> -
+                            <span id="deleteAllTextHelp">The second button deletes all checks</span>.
                         </li>
                         <li>
-                            <span class="fw-semibold">Check's card</span> -
-                            <span>The check's card opens the check's screen, allowing you to full view it and edit it</span>.
+                            <span class="fw-semibold" id="checkCardHelp">Checks' summary</span> -
+                            <span id="checkCardTextHelp">The check's summary opens its screen, allowing you to full view it and edit it</span>.
                         </li>
                     </ol>
                     <hr>
                     <img
-                    class="img-fluid <%= (theme === "dark") ? "shadowDark" : "shadowLight" %>"
-                    src="https://res.cloudinary.com/ddmvvgno3/image/upload/v1707327399/SplitIt/HomeScreen_z97si1.png" alt="Image of home's button"
+                        id="homeScreenImg"
+                        class="img-fluid <%= (theme === "dark") ? "shadowDark" : "shadowLight" %>"
+                        src="https://res.cloudinary.com/ddmvvgno3/image/upload/v1707411921/SplitIt/HomeScreen_q6fhud.png" alt="Image of home's button"
                     />
                     <hr>
                 </div>
@@ -68,73 +76,81 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content <%= (theme === "dark") ? "bg-dark text-light" : "" %>">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="helpLabel2">How does <span class="fst-italic">Split it!</span> works?</h1>
+                <h1 class="modal-title fs-5" id="helpLabel2">
+                    <% if (language == "pt") {%>
+                        Como funciona o <span class="fst-italic">Divide aê!</span>?
+                    <% } else { %>
+                        How does <span class="fst-italic">Split it!</span> works?
+                    <% } %>
+                </h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div>
-                    <p>The checks's menu has 3 buttons:</p>
-                    <ul>
-                        <li>
-                            <span class="fw-semibold">Go back</span> -
-                            <span>The first button return you to the home screen</span>.
-                        </li>
-                        <li>
-                            <span class="fw-semibold">Edit</span> -
-                            <span>The second button opens a window where you can edit the check</span>.
-                        </li>
-                        <li>
-                            <span class="fw-semibold">Delete</span> -
-                            <span>The third button deletes the check</span>.
-                        </li>
-                    </ul>
-                    <hr>
-                    <img
-                    class="img-fluid <%= (theme === "dark") ? "shadowDark" : "shadowLight" %>"
-                    src="https://res.cloudinary.com/ddmvvgno3/image/upload/v1707327399/SplitIt/TopMenuCheck_zq5c8i.png" alt="Image of home's menu"
-                    />
-                    <hr>
-                </div>
-                <div>
-                    <p>The checklist has some buttons and important informations:</p>
+                    <p id="checkMenuHelp">The checks's menu has 3 buttons:</p>
                     <ol>
                         <li>
-                            <span class="fw-semibold">Edit person</span> -
-                            <span>The first button opens a window where you can edit the person and their orders</span>.
+                            <span class="fw-semibold" id="goBackHelp">Go back</span> -
+                            <span id="goBackTextHelp">The first button return you to the home screen</span>.
                         </li>
                         <li>
-                            <span class="fw-semibold">Delete person</span> -
-                            <span>The second button deletes the person, if there are more than 1 person</span>.
+                            <span class="fw-semibold" id="editCheckHelp">Edit</span> -
+                            <span id="editCheckTextHelp">The second button opens a window where you can edit the check</span>.
                         </li>
                         <li>
-                            <span class="fw-semibold">Add order</span> -
-                            <span>The third button opens a window where you can add an order to the person</span>.
-                        </li>
-                        <li>
-                            <span class="fw-semibold">Pay</span> -
-                            <span>Here you can see how much each person has to pay, with tip included</span>.
-                        </li>
-                        <li>
-                            <span class="fw-semibold">Edit side dishes</span> -
-                            <span>This button opens a window where you can edit the side dishes</span>.
-                        </li>
-                        <li>
-                            <span class="fw-semibold">Price</span> -
-                            <span>It shows the total price of the sum of all orders. If it's red and with a "*", it means that the sum and the price you inserted are different</span>.
-                        </li>
-                        <li>
-                            <span class="fw-semibold">Add person</span> -
-                            <span>With this button you can add a new person to the check</span>.
-                        </li>
-                        <li>
-                            <span class="fw-semibold">Add side dishes</span> -
-                            <span>The last button opens a window where you can add side dishes</span>.
+                            <span class="fw-semibold" id="deleteCheckHelp">Delete</span> -
+                            <span id="deleteCheckTextHelp">The third button deletes the check</span>.
                         </li>
                     </ol>
                     <hr>
                     <img
-                    class="img-fluid <%= (theme === "dark") ? "shadowDark" : "shadowLight" %>"
-                    src="https://res.cloudinary.com/ddmvvgno3/image/upload/v1707333212/SplitIt/CheckList_mlp0mk.png" alt="Image of home's button"
+                        id="checkMenuImg"
+                        class="img-fluid <%= (theme === "dark") ? "shadowDark" : "shadowLight" %>"
+                        src="https://res.cloudinary.com/ddmvvgno3/image/upload/v1707411921/SplitIt/TopMenuCheck_rqgnv8.png" alt="Image of home's menu"
+                    />
+                    <hr>
+                </div>
+                <div>
+                    <p id="checkListHelp">The check's list has some buttons and important informations:</p>
+                    <ol>
+                        <li>
+                            <span class="fw-semibold" id="editPersonHelp">Edit person</span> -
+                            <span id="editPersonTextHelp">The first button opens a window where you can edit the person and their orders</span>.
+                        </li>
+                        <li>
+                            <span class="fw-semibold" id="deletePersonHelp">Delete person</span> -
+                            <span id="deletePersonTextHelp">The second button deletes the person, if there are more than 1 person</span>.
+                        </li>
+                        <li>
+                            <span class="fw-semibold" id="addOrderHelp">Add order</span> -
+                            <span id="addOrderTextHelp">The third button opens a window where you can add an order to the person</span>.
+                        </li>
+                        <li>
+                            <span class="fw-semibold" id="payHelp">Pay</span> -
+                            <span id="payTextHelp">Here you can see how much each person has to pay, with tip included</span>.
+                        </li>
+                        <li>
+                            <span class="fw-semibold" id="editSideDishesHelp">Edit side dishes</span> -
+                            <span id="editSideDishesTextHelp">This button opens a window where you can edit the side dishes</span>.
+                        </li>
+                        <li>
+                            <span class="fw-semibold" id="priceHelp">Price</span> -
+                            <span id="priceTextHelp">It shows the total price of the sum of all orders. If it's red and with a "*", it means that the sum and the price you inserted are different</span>.
+                        </li>
+                        <li>
+                            <span class="fw-semibold" id="addPersonHelp">Add person</span> -
+                            <span id="addPersonTextHelp">With this button you can add a new person to the check</span>.
+                        </li>
+                        <li>
+                            <span class="fw-semibold" id="addSideDishesHelp">Add side dishes</span> -
+                            <span id="addSideDishesTextHelp">The last button opens a window where you can add side dishes</span>.
+                        </li>
+                    </ol>
+                    <hr>
+                    <img
+                        id="checkListImg"
+                        class="img-fluid <%= (theme === "dark") ? "shadowDark" : "shadowLight" %>"
+                        src="https://res.cloudinary.com/ddmvvgno3/image/upload/v1707411921/SplitIt/CheckList_i3ilj7.png" alt="Image of home's button"
                     />
                     <hr>
                 </div>
