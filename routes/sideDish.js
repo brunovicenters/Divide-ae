@@ -2,10 +2,10 @@ const express = require("express");
 const router = express.Router();
 const store = require("store");
 
-const Check = require("../controller/check");
-const Person = require("../controller/person");
-const Order = require("../controller/order");
-const sideDish = require("../controller/sideDish");
+const Check = require("../models/check");
+const Person = require("../models/person");
+const Order = require("../models/order");
+const sideDish = require("../models/sideDish");
 
 const getDate = require("../utils/getDate");
 

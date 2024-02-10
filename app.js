@@ -6,9 +6,9 @@ const methodOverride = require("method-override");
 
 const app = express();
 
-const Check = require("./controller/check");
-const Person = require("./controller/person");
-const Order = require("./controller/order");
+const Check = require("./models/check");
+const Person = require("./models/person");
+const Order = require("./models/order");
 
 const checkRoutes = require("./routes/check");
 const personRoutes = require("./routes/person");

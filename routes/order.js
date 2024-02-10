@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const store = require("store");
 
-const Order = require("../controller/order");
+const Order = require("../models/order");
 
 const getDate = require("../utils/getDate");
 
