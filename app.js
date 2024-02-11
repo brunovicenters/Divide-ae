@@ -48,7 +48,7 @@ let devTest = new Check(
   new Person("Bruno", new Order("pão de queijo", "4", "25.99")),
   0
 );
-if (store.get("checks") === undefined && store.get("checks").length == 0) {
+if (store.get("checks") === undefined || store.get("checks").length == 0) {
   store.set("checks", []);
   store.set("checks", [devTest]);
 }
