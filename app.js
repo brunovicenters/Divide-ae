@@ -37,7 +37,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(methodOverride("_method"));
 
-store.set("checks", []);
 store.set("theme", "dark");
 store.set("language", "pt");
 
@@ -49,7 +48,10 @@ let devTest = new Check(
   new Person("Bruno", new Order("pão de queijo", "4", "25.99")),
   0
 );
-store.set("checks", [devTest]);
+if (store.get("checks") === undefined && store.get("checks").length == 0) {
+  store.set("checks", []);
+  store.set("checks", [devTest]);
+}
 
 app.use("/check", checkRoutes);
 app.use("/person", personRoutes);
