@@ -1,41 +1,50 @@
-# Divide-aê\!
+# React + TypeScript + Vite
 
-Uma calculadora feita com ExpressJS, EJS e Bootstrap. Criada para dividir
-contas de restaurantes e lanchonetes, ela trará fim aos seus problema na hora
-de pagar\!
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-- [Sobre](#sobre)
-- [Utilização](#utilização)
+Currently, two official plugins are available:
 
-![Tela de mudar idioma](https://i.imgur.com/Q8JV1GW.png)
-![Imagem dentro da conta](https://i.imgur.com/Veo30kh.png)
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Sobre
+## Expanding the ESLint configuration
 
-Divide aê! é uma calculadora que possui todas as ferramentas para você calcular
-as depesas de cada pessoa em um restaurante, assim evitando com que alguém pague
-mais ou menos do que deve, tornando a experiência mais fácil e tranquila, te livrando
-de todo o caos matemático de calcular gorjetas e acompanhamentos!
-Além disso, Divide aê! possui dois idiomas: Português e Inglês, além de trazer a
-possibilidade de mudar entre o tema claro e escuro do site.
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-## Utilização
+- Configure the top-level `parserOptions` property like this:
 
-Para instalar e utilizar o projeto em sua máquina é necessário possuir o
-[NodeJS](https://nodejs.org/en), além de clonar o repositório com o:
-
-```bash
-git clone git@github.com:brunovicenters/Divide-ae.git
+```js
+export default tseslint.config({
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
 ```
 
-Após a instalação do projeto, é necessário insatlar suas dependências, com:
+- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
+- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-```bash
-npm install
-```
+```js
+// eslint.config.js
+import react from 'eslint-plugin-react'
 
-Após a instalação, para rodar o projeto, basta executar em seu terminal:
-
-```bash
-node app.js
+export default tseslint.config({
+  // Set the react version
+  settings: { react: { version: '18.3' } },
+  plugins: {
+    // Add the react plugin
+    react,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended rules
+    ...react.configs.recommended.rules,
+    ...react.configs['jsx-runtime'].rules,
+  },
+})
 ```
